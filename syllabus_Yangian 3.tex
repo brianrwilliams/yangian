@@ -1,0 +1,135 @@
+\documentclass[10pt]{article}
+
+\usepackage{macros}
+
+%Formatting
+\linespread{1.25}
+
+\usepackage{parskip}
+\setlength{\parindent}{18pt}
+\setlength{\parindent}{0cm}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\title{The Yangian and four dimensional gauge theory}
+
+%\author{Brian R. Williams}
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+
+\begin{document}
+\maketitle
+
+There is a deep connection between gauge theory and quantum groups.
+Perhaps the most ubiquitous is the relationship between the category of line operators in Chern-Simons theory on three manifolds and the braided monoidal category of representations of the quantum group.
+In the seminal work, Costello \cite{CosInt, CosYangian} has shown how certain infinite dimensional quantum groups, Yangians, arise from the algebra of operators of a {\em four} dimensional (supersymmetric) gauge theory.
+The key to this result relies on the formalism of Costello-Gwilliam that the factorization algebras of a quantum field theory form a factorization algebra. 
+This is an enhancement of the well-known description of a conformal field theory in terms of vertex, or chiral, algebras. 
+The primary goal of this seminar is to outline Costello's construction which starts from the factorization algebra description of the observables of a four dimensional gauge theory and recovers the Yangian quantum group of the gauge Lie algebra. 
+Time permitting, we can f ocus on more concrete and computational sides of the program began in the works \cite{CWY1, CWY2}.
+
+{\bf Some keywords}: Factorization algebras, Koszul duality, quantum groups, Yangians. 
+
+{\bf Informal prerequisites}: Basic category theory, homological algebra, and representation theory for Lie algebras.
+Knowledge of vector bundles, connections, and differential forms. 
+
+\begin{itemize}
+\item[Week 1, Aug 27--31] 
+{\em An introduction to factorization algebras}.  
+The definition of a factorization algebra with values in a symmetric monoidal category.
+Lurie's result that locally constant factorization algebras on $\RR^n$ are equivalent to $E_n$-algebras. 
+Hochschild homology as a special case of factorization homology.
+\cite{CG1, LurieHA, AFTopMan}.
+
+
+\item[Week 2, Sep 4--7] 
+{\em Holomorphic factorization algebras and vertex algebras}. 
+Background on vertex algebras.
+Describe functor from the category of holomorphic factorization algebras to vertex algebras.
+Relationship to {\em chiral algebras} of Beilinson-Drinfeld. 
+\cite{CG1, BD}. 
+
+\item[Week 3, Sep 10--14]
+{\em Koszul duality for $E_n$-algebras}.
+Categories of (co)modules for $E_n$-algebras.
+Koszul duality for associative algebras and its generalization for augmented $E_n$-algebras (with special attention to the case $n=2$).
+Outline result of Tamarkin that the Koszul dual of an $E_2$-algebra is a Hopf algebra. 
+Interplay between Hochschild homology and Koszul duality.
+\cite{CosYangian, Tamarkin}.
+
+\item[Week 4, Sep 17--21] 
+{\em Quantum groups and the Yangian}.
+\brian{Not sure exactly how to structure this, some input would be greatly appreciated!}
+Drinfeld's universal $R$-matrix. 
+Relationship to integrable systems and lattice models.
+\cite{Etingof, ChariPressley}
+
+\item[Week 5, Sep 24--28] {\em Quantum groups and the Yangian (cont.)}.
+
+\item[Week 6, Oct 1--5] {\em ``Four-dimensional Chern-Simons theory"}.
+The moduli space of holomorphic, partially flat, connections on a complex surface.\footnote{Roughly, a holomorphic partially flat connecton on a complex manifold of the form $X \times Y$ is a holomorphic connection that is holomorphically flat in the $Y$-direction.}
+The moduli space of multiplicative Higgs bundles on a Riemann surface.
+
+\item[Week 7, Oct 9--12] {\em Batalin-Vilkovisky quantization and renormalization}.
+An introduction to BV quantization for gauge theories. \brian{More details}
+
+\item[Week 8, Oct 15--19] {\em Batalin-Vilkovisky quantization and renormalization (cont.)}.
+
+\item[Week 9, Oct 22--26] {\em Observables of the four-dimensional gauge theory}.
+Deformation of functions on the classical moduli space defined by BV quantization to small orders in $\hbar$. 
+Line operators and a generalized version of ``conformal blocks" from CFT. 
+\cite{CosBook, CG2, CosYangian}
+
+\item[Week 10, Oct 29--Nov 2] {\em Costello's main result}.
+\begin{thm}
+The Koszul dual of the $E_2$-algebra of quantum observables of four-dimensional Chern-Simons theory on $\CC_z \times \RR^2_w$ (restricted to a factorization algebra on $\{z=0\} \times \RR^2_w$) is Koszul dual to the Yangian Hopf algebra. 
+\end{thm}
+\cite{CosBook, CG2, CosYangian,CWY1,CWY2}
+
+\item[Week 11, Nov 5--9] {\em Holomorphic factorization and the universal $R$-matrix}
+The quantum OPE as a map of $E_2$-algebras.
+Hochschild homology for categories.
+\cite{CosYangian}.
+
+\item[Week 12, Nov 13--16] {\em The quantum Yang-Baxter equation}
+How the quantum master equation for BV quantization implies the quantum Yang-Baxter equation.
+\cite{CWY1,CWY2}.
+
+\item[Weeks ??] Enhancements and variations of the construction. 
+Realizing various spin systems by tweaking the input data. 
+Coupling to surface operators. 
+\end{itemize} 
+
+%\begin{itemize}
+%\item An introduction to factorization algebras valued in symmetric monoidal $\infty$-categories. Lurie's result that locally constant factorization algebras recover algebras over the operad of little disks.
+%Modules for $E_n$-algebras.\cite{CG1, LurieHA, AFTopMan}
+%\item Holomorphic factorization algebras and their relationship to chiral and vertex algebras. \cite{CG1, BD}
+%\item Koszul duality for $E_n$-algebras.
+%Tamarkin's \cite{Tamarkin} result that the Koszul dual of an $E_2$ algebra is a Hopf algebra.
+%The Hochschild homology of $E_n$ algebras.
+%%\cite{FrancisAyala, ...}
+%\item An introduction to quantum groups and the Yangian.
+%Drinfeld's universal $R$-matrix. \cite{Etingof, ChariPressley}
+%Relationship to integrable systems and lattice models.
+%\item The classical moduli space of holomorphic partially flat connections on complex surfaces.\footnote{Roughly, a holomorphic partially flat connecton on a complex manifold of the form $X \times Y$ is a holomorphic connection that is holomorphically flat in the $Y$-direction.}
+%The Batalin-Vilkovisky formalism and quantization.
+%Costello-Gwilliam's result that the operators of a gauge theory (or any QFT) form a factorization algebra. \cite{CosBook, CG2, CosYangian}
+%\item Line operators of the four dimensional gauge theory and their interpretation via Koszul duality.
+%Possibly introduce Hochschild homology for monoidal categories. 
+%\item Computing the universal $R$-matrix from the BV quantization. 
+%\item Enhancements and variations of the construction. 
+%Realizing various spin systems by tweaking the input data. 
+%Coupling to surface operators. 
+%\end{itemize}
+
+%\tableofcontents
+
+%\section*{Acknowledgements} 
+
+%\input{first section}
+\bibliographystyle{alpha}
+%\bibliographystyle{spmpsci}  
+\bibliography{syllabus}
+
+\end{document}
