@@ -1,0 +1,41 @@
+\begin{thebibliography}{Tam03}
+
+\bibitem[CG]{CG2}
+Kevin Costello and Owen Gwilliam.
+\newblock Factorization algebras in quantum field theory. {V}ol. 2.
+\newblock available at \url{http://people.mpim-bonn.mpg.de/gwilliam}.
+
+\bibitem[CG17]{CG1}
+Kevin Costello and Owen Gwilliam.
+\newblock {\em Factorization algebras in quantum field theory. {V}ol. 1},
+  volume~31 of {\em New Mathematical Monographs}.
+\newblock Cambridge University Press, Cambridge, 2017.
+
+\bibitem[Cos]{CosYangian}
+Kevin Costello.
+\newblock {S}upersymmetric gauge theory and the {Y}angian.
+\newblock Available at \url{http://arxiv.org/abs/1303.2632}.
+
+\bibitem[Cos11]{CosBook}
+Kevin Costello.
+\newblock {\em Renormalization and effective field theory}, volume 170 of {\em
+  Mathematical Surveys and Monographs}.
+\newblock American Mathematical Society, Providence, RI, 2011.
+
+\bibitem[Lur]{LurieHA}
+Jacob Lurie.
+\newblock Higher {A}lgebra.
+\newblock available at
+  \url{http://www.math.harvard.edu/~lurie/papers/higheralgebra.pdf}.
+
+\bibitem[Tam03]{Tamarkin}
+Dmitry~E. Tamarkin.
+\newblock Formality of chain operad of little discs.
+\newblock {\em Lett. Math. Phys.}, 66(1-2):65--72, 2003.
+
+\bibitem[Wit89]{WittenJones}
+Edward Witten.
+\newblock Quantum field theory and the {J}ones polynomial.
+\newblock {\em Comm. Math. Phys.}, 121(3):351--399, 1989.
+
+\end{thebibliography}

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  31 AUG 2018 17:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  6 SEP 2018 15:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"syllabus_Yangian 3.tex"
-(./syllabus_Yangian 3.tex
+**syllabus_Yangian_4.tex
+(./syllabus_Yangian_4.tex
 LaTeX2e <2018-04-01> patch level 2
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/article.cls
@@ -907,8 +907,8 @@ File: pppdftex.def 2017/10/31 v0.5l Pdfpages driver for pdfTeX (AM)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
-(./syllabus_Yangian 3.aux)
-\openout1 = `"syllabus_Yangian 3.aux"'.
+(./syllabus_Yangian_4.aux)
+\openout1 = `syllabus_Yangian_4.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
@@ -1007,9 +1007,9 @@ LaTeX Info: Redefining \ref on input line 22.
 LaTeX Info: Redefining \pageref on input line 22.
 LaTeX Info: Redefining \nameref on input line 22.
 
-(./syllabus_Yangian 3.out) (./syllabus_Yangian 3.out)
+(./syllabus_Yangian_4.out) (./syllabus_Yangian_4.out)
 \@outlinefile=\write5
-\openout5 = `"syllabus_Yangian 3.out"'.
+\openout5 = `syllabus_Yangian_4.out'.
 
 LaTeX Font Info:    Try loading font information for OML+zplm on input line 22.
 
@@ -1080,52 +1080,45 @@ LaTeX Font Info:    Font shape `U/msb/m/n' will be
 LaTeX Warning: No \author given.
 
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 43.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 42.
+[1
+
+{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 50.
-LaTeX Font Info:    Try loading font information for U+fplmbb on input line 58.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 51.
+LaTeX Font Info:    Try loading font information for U+fplmbb on input line 64.
+
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/psnfss/ufplmbb.fd
 File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
-) [1
-
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 94.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 94.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 94.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 5.21004pt on input line 94.
-
-Overfull \hbox (2.66223pt too wide) in paragraph at lines 113--117
-[]\OT1/ppl/m/it/10 Holomorphic fac-tor-iza-tion and the uni-ver-sal $\OML/zplm/
-m/it/10 R$\OT1/ppl/m/it/10 -matrix \OT1/ppl/m/n/10 The quan-tum OPE as a map of
- $\OML/zplm/m/it/10 E[]$\OT1/ppl/m/n/10 -algebras.
+)
+Overfull \hbox (1.14384pt too wide) in paragraph at lines 63--67
+\OT1/ppl/m/n/10 Lurie's re-sult that lo-cally con-stant fac-tor-iza-tion al-ge-
+bras on $\U/fplmbb/m/n/10 R[]$ \OT1/ppl/m/n/10 are equiv-a-lent to $\OML/zplm/m
+/it/10 E[]$\OT1/ppl/m/n/10 -algebras.
  []
 
-[2] (./syllabus_Yangian 3.bbl
+[2] (./syllabus_Yangian_4.bbl
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
-) [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 161.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 161.
- (./syllabus_Yangian 3.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 161.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 161.
-Package rerunfilecheck Info: File `"syllabus_Yangian 3".out' has not changed.
+ [3]) [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 159.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 159.
+ (./syllabus_Yangian_4.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 159.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 159.
+Package rerunfilecheck Info: File `syllabus_Yangian_4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 161.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 159.
  ) 
 Here is how much of TeX's memory you used:
- 24396 strings out of 492649
- 479284 string characters out of 6129622
- 613858 words of memory out of 5000000
- 27722 multiletter control sequences out of 15000+600000
- 39316 words of font info for 125 fonts, out of 8000000 for 9000
+ 24372 strings out of 492649
+ 479002 string characters out of 6129622
+ 613873 words of memory out of 5000000
+ 27706 multiletter control sequences out of 15000+600000
+ 30717 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,8n,86p,3257b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,7n,86p,3255b,417s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
@@ -1136,10 +1129,10 @@ live/2018/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2018/texmf-
 dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2018/texmf-dist/fo
 nts/type1/urw/palatino/uplri8a.pfb>
-Output written on "syllabus_Yangian 3.pdf" (3 pages, 107480 bytes).
+Output written on syllabus_Yangian_4.pdf (4 pages, 108378 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 120 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  21 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

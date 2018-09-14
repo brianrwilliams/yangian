@@ -1,0 +1,73 @@
+\begin{thebibliography}{CWYb}
+
+\bibitem[AF15]{AFTopMan}
+David Ayala and John Francis.
+\newblock Factorization homology of topological manifolds.
+\newblock {\em J. Topol.}, 8(4):1045--1084, 2015.
+
+\bibitem[BD04]{BD}
+Alexander Beilinson and Vladimir Drinfeld.
+\newblock {\em Chiral algebras}, volume~51 of {\em American Mathematical
+  Society Colloquium Publications}.
+\newblock American Mathematical Society, Providence, RI, 2004.
+
+\bibitem[CG]{CG2}
+Kevin Costello and Owen Gwilliam.
+\newblock Factorization algebras in quantum field theory. {V}ol. 2.
+\newblock available at \url{http://people.mpim-bonn.mpg.de/gwilliam}.
+
+\bibitem[CG17]{CG1}
+Kevin Costello and Owen Gwilliam.
+\newblock {\em Factorization algebras in quantum field theory. {V}ol. 1},
+  volume~31 of {\em New Mathematical Monographs}.
+\newblock Cambridge University Press, Cambridge, 2017.
+
+\bibitem[Cosa]{CosInt}
+Kevin Costello.
+\newblock {I}ntegrable lattice models from four-dimensional field theories.
+\newblock Available at \url{https://arxiv.org/abs/1308.0370}.
+
+\bibitem[Cosb]{CosYangian}
+Kevin Costello.
+\newblock {S}upersymmetric gauge theory and the {Y}angian.
+\newblock Available at \url{http://arxiv.org/abs/1303.2632}.
+
+\bibitem[Cos11]{CosBook}
+Kevin Costello.
+\newblock {\em Renormalization and effective field theory}, volume 170 of {\em
+  Mathematical Surveys and Monographs}.
+\newblock American Mathematical Society, Providence, RI, 2011.
+
+\bibitem[CP94]{ChariPressley}
+Vyjayanthi Chari and Andrew Pressley.
+\newblock {\em A guide to quantum groups}.
+\newblock Cambridge University Press, Cambridge, 1994.
+
+\bibitem[CWYa]{CWY1}
+Kevin Costello, Edward Witten, and Masahito Yamazaki.
+\newblock {G}auge {T}heory and {I}ntegrability, i.
+\newblock Available at \url{https://arxiv.org/abs/1709.09993}.
+
+\bibitem[CWYb]{CWY2}
+Kevin Costello, Edward Witten, and Masahito Yamazaki.
+\newblock {G}auge {T}heory and {I}ntegrability, ii.
+\newblock Available at \url{https://arxiv.org/abs/1802.01579}.
+
+\bibitem[ES02]{Etingof}
+Pavel Etingof and Olivier Schiffmann.
+\newblock {\em Lectures on quantum groups}.
+\newblock Lectures in Mathematical Physics. International Press, Somerville,
+  MA, second edition, 2002.
+
+\bibitem[Lur]{LurieHA}
+Jacob Lurie.
+\newblock Higher {A}lgebra.
+\newblock available at
+  \url{http://www.math.harvard.edu/~lurie/papers/higheralgebra.pdf}.
+
+\bibitem[Tam03]{Tamarkin}
+Dmitry~E. Tamarkin.
+\newblock Formality of chain operad of little discs.
+\newblock {\em Lett. Math. Phys.}, 66(1-2):65--72, 2003.
+
+\end{thebibliography}

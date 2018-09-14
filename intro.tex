@@ -1,0 +1,522 @@
+\documentclass[10pt]{amsart}
+
+\usepackage{macros}
+
+%Formatting
+\linespread{1.25}
+
+\usepackage{parskip}
+\setlength{\parindent}{18pt}
+\setlength{\parindent}{0cm}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\title{The Yangian and four-dimensional gauge theory}
+
+\author{Brian R. Williams}
+\date{} 
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+
+\begin{document}
+\maketitle
+
+\section{Prelude: Chern-Simons and quantum groups}
+
+Chern-Simons theory is a three-dimensional topological field theory consisting of flat connections of a principal $G$-bundle. 
+The moduli space of the solutions to the classical equations of motion of Chern-Simons on a three-manifold $M$ is ${\rm Flat}_G(M)$, the moduli space of $G$-local systems on $M$. 
+If $A$ represents a connection on a principal $G$-bundle, flatness is the equation
+\ben 
+F(A) = \d A + \frac{1}{2} [A,A] = 0 .
+\een 
+Witten \cite{WittenJones} showed that quantum Chern-Simons theory is intimately connected to knot invariants, specifically, the Jones polynomial. 
+As a result, Chern-Simons theory is indirectly related to the theory of quantum groups. 
+
+In the style of physics, Chern-Simons theory is described by an action functional depending on some connections of principal $G$-bundles over a three-manifold. 
+The critical values of the action functional precisely correspond to flat $G$-bundles. 
+Two flat $G$-bundles are said to be equivalent if they differ by a $G$-valued gauge transformation. 
+The moduli space of flat $G$-bundles is the space of flat connections modulo gauge. 
+Of course, this is a highly singular object, so one must consider it as an appropriate stacky object. 
+
+Suppose the three-manifold we are studying is of the form $M = \Sigma \times \RR$, where $\Sigma$ is a Riemann surface. 
+The moduli space of flat $G$-bundles that are {\em constant} in the direction of $\RR$ is of the form
+\begin{align*}
+{\rm Flat}_G(\Sigma) & = \{{\rm Flat \; }G{\rm -bundles\;on\;}\Sigma\} \\ & = {\rm Hom}(\pi_1(\Sigma), G) / G
+\end{align*}
+We will assume that $G$ is a complex semi-simple group.
+
+\begin{fact}
+The space ${\rm Flat}_G(\Sigma)$ is a {\em symplectic} manifold. 
+\end{fact} 
+
+If $A$ is some reference flat connection for a principal $G$-bundle $P$ on $\Sigma$, then the tangent space of the moduli space of flat $G$-bundles at $A$ is the first order deformations of $A$ in the space of all flat $G$-bundles. 
+We must still take the quotient by gauge transformations. 
+That is:
+\ben
+T_A {\rm Flat}_G(\Sigma) = \{\Tilde{A} \in \Omega^1(\Sigma , \fg_P) \; | \; A + \epsilon \Tilde{A} {\rm \; is\;flat}\} / {\rm gauge}
+\een
+Here, $\epsilon$ is a formal parameter such that $\epsilon^2 = 0$. 
+Also, $\fg_A$ is the adjoint bundle of $P$, it is a bundle of Lie algebras with fiber $\fg = {\rm Lie}(G)$. 
+The notation $\fg_A$ is to remind us that we are equipping it with the flat connection $A$. 
+
+Since $A$ is flat, the condition that $A + \epsilon \Tilde{A}$ is flat is equivalent to 
+\ben
+\d_A \Tilde{A} = \d \Tilde{A} + [\Tilde{A}, A] = 0 .
+\een 
+Here, $\d_A = \d + [A,-]$ is the covariant derivative with respect to $A$. 
+Moreover, the gauge transformations $f \in \Gamma(\Sigma, \fg_P)$ act by
+\ben
+\Tilde{A} \mapsto \d_A f
+\een
+Thus, we see that $T_A{\rm Flat}_G(\Sigma)$ is precisely the cohomology group $H^1(\Sigma, \fg_P)$. 
+
+If $\Tilde{A}, \Tilde{A}' \in T_A H^1(\Sigma, \fg_P)$ we define the symplectic form
+\ben
+\omega_A(\Tilde{A}, \Tilde{A}') = \int_\Sigma \<\Tilde{A}, \Tilde{A}'\>_\fg
+\een
+where $\<-,-\>_\fg$ is the Killing form on $\fg$. 
+Note that the integrand on the RHS is a two-form so it can be integrated.
+
+The full, derived tangent space, can be identified with $\Omega^*(\Sigma, \fg_P)[1]$ equipped with the differential $\d_A = \d + [A,-]$. 
+Note that $\Omega^*(\Sigma, \fg_P)$ has the structure of a dg Lie algebra, and the Maurer-Cartan elements are precisely deformations of the flat connection $A$. 
+This is a generic property of formal moduli, and more relevant to us, perturbative field theories. 
+
+Quantum Chern-Simons on $\Sigma \times \RR$ essentially reduces to studying deformation quantization for the symplectic manifold ${\rm Flat}_G(\Sigma)$. 
+The operators of the classical theory are just the functions on the symplectic manifold $\sO({\rm Flat}_G(\Sigma))$.
+Symplectic structure equips this with a Poisson bracket. 
+A deformation quantization is an algebra of the form $\sO_{\hbar}({\rm Flat}_G(\Sigma))$ whose associative product satisfies
+\ben
+a, b \in \sO_\hbar \implies \lim_{\hbar \to 0} \frac{1}{\hbar} [a,b] = \{a,b\} .
+\een
+
+If we work near the trivial connection on $\RR^3 = \RR^2 \times \RR$ the moduli space ${\rm Flat}_G(\RR^2)$ is described by the dg Lie algebra $\Omega^*(\RR^2, \fg)$. 
+Functions on the moduli space are modeled on the Chevalley-Eilenberg cochain complex
+\ben
+\sO({\rm Flat}_G(\RR^2)) = C^*(\Omega^*(\RR^2, \fg))
+\een 
+Note that as a cochain complex, there is a quasi-isomorphism $C^*(\Omega^*(\RR^2, \fg)) \simeq C^*(\fg)$. 
+
+\ben
+\begin{tikzcd}
+\sO_{\hbar} ({\rm Flat}_G(\Sigma)) \ar[d, "\hbar \to 0"'] & \simeq & C^*_{\hbar}(\fg) \arrow[d, "\hbar \to 0"'] \arrow[r, leftrightarrow, "{\rm Koszul}"] & U_\hbar(\fg)  \arrow[d,"\hbar \to 0"]  \\
+\sO ({\rm Flat}_G(\Sigma)) & \simeq & C^*(\fg) \arrow[r, leftrightarrow, "{\rm Koszul}"'] & U(\fg) .
+\end{tikzcd}
+\een
+
+This picture hints at a more direct relationship between Chern-Simons theory and the quantum group, without passing through the theory of knot invariants. 
+Even so, knot invariants have a natural physical interpretation as line operators in the three-dimensional theory. 
+This picture is compatible with the approach we take to obtain the quantum group via factorization methods.
+
+\section{The four-dimensional theory}
+
+The four-dimensional gauge theory we study is formally very similar to three-dimensional Chern-Simons theory. 
+
+We start with a four-manifold of the form $\Sigma \times S$ where $\Sigma$ is a Riemann surface and $S$ is a real two-dimensional manifold. 
+Throughout the course of this seminar we will take $\Sigma$ to be either $\CC$ or an elliptic curve $E$. 
+
+We also fix the data of a {\em holomorphic} one-form $\omega \in \Omega^{1,hol}_{cl}(\Sigma)$ that is no-where vanishing. 
+The moduli space of the four-dimensional gauge theory consists of connections $A$ satisfying the following modified version of flatness
+\ben
+\omega \wedge F(A) = \omega \wedge \left( \d A + \frac{1}{2}[A,A]\right) = 0 .
+\een
+Introduce local coordinates $(z,\zbar)$ on $\Sigma$ and $(w, \wbar)$ on $S$. 
+Locally, a connection one-form looks like
+\ben
+A = A_{z} \d z + A_{\zbar} \d \zbar + A_{w} \d w + A_{\wbar} \d \wbar
+\een
+In the flatness equation, note that the component $A_z$ never appears. 
+Thus, we may as well restrict ourselves to connections of the form
+\be\label{connection}
+A = A_{\zbar} \d \zbar + A_{w} \d w + A_{\wbar} \d \wbar .
+\ee
+We can then translate the flatness equation into the series of equations
+\begin{align*}
+\frac{\partial}{\partial w} A_{\wbar} + \frac{\partial}{\partial \wbar} A_w + [A_w, A_{\wbar}] & = 0 , \\
+\frac{\partial}{\partial \wbar} A_{\zbar} + [A_{\wbar}, A_{\zbar}] & = 0 , \\
+\frac{\partial}{\partial w} A_{\zbar} + [A_{w}, A_{\zbar}] & = 0 .
+\end{align*}
+We draw the following conclusions:
+\begin{itemize}
+\item
+For each $w_0 \in S$ the connection one-form $A_{\zbar} \d \zbar$ restricted to $\Sigma \times \{w_0\}$ determines the structure of a holomorphic principal $G$-bundle on $\Sigma$ (since every $\fg$-valued $(0,1)$-form on a Riemann surface determines a holomorphic principal bundle). 
+\item
+The first equation above comes from the $\omega \Omega^{0}(\Sigma) \tensor \Omega^2(S)$ part of the curvature equation.
+It implies that for each $z_0 \in \Sigma$ the connection one-form $A_w \d w + A_{\wbar} \d \wbar$ restricted to $\{z_0\} \times S$ is flat.
+\item
+The next two equations come from the component of the flatness equation living in $\omega \Omega^{0,1}(S) \tensor \Omega^1(\Sigma)$. 
+Suppose that $\gamma : [0,1] \to S$ is a path from $\gamma(0) = w_0$ to $\gamma(1) = w_1$ in $S$. 
+Then, we can view $\gamma$ as a map $\gamma : \Sigma \times [0,1] \to \Sigma \times S$. 
+Then, these equation say that $\gamma^* A$ determines a homotopy between the holomorphic connections $(A_{\zbar} \d \zbar)|_{w_0}$ and $(A_{\zbar} \d \zbar)|_{w_1}$. 
+In other words, the path $\gamma$ produces and isomorphism of holomorphic bundles over $\Sigma \times \{w_0\}$ and $\Sigma \times \{w_1\}$. 
+Thus, we have a flat family of holomorphic bundles on $\Sigma$ parametrized by $S$. \footnote{
+Dually, we can view the equations as saying we have a holomorphic family of flat bundles. }
+\end{itemize}
+
+The full space of fields of the four-dimensional theory is of the form
+\ben
+\Omega^{0,*}(\Sigma) \tensor \Omega^*(S) \tensor \fg[1] .
+\een 
+The shift down by one amounts to the fact that we want to view the fields in degree zero as connection one-forms. 
+Check that the degree zero piece precisely consists of those connections (\ref{connection}). 
+
+Most of this course will be concerned with the local setting where our four-manifold is of the form $\Sigma \times S = \CC \times \RR^2$. 
+When $\Sigma = \CC$ and $S = \RR^2$ we will take for our holomorphic one-form $\omega = \d z$, unless otherwise noted. 
+
+\begin{rmk} There are various variants of the theory just described.
+There is a version of this gauge theory defined on any complex surface $X$ equipped with some extra structure. 
+For instance, the theory makes sense on all holomorphic symplectic manifolds. 
+\end{rmk}
+
+\subsection{The operators of the four-dimensional gauge theory}
+
+Analogously to the case of Chern-Simons, the main statement about quantum groups we aim to prove entails the operators of the four-dimensional gauge theory. 
+Let's consider the gauge theory placed on the four-manifold of the form
+\ben
+\Sigma_z \times (S^1 \times \RR)_w .
+\een 
+Of course, there are no global coordinates $z,w$, we just continue to use the notation to indicate that the theory is holomorphic on the Riemann surface $\Sigma$, and topological on $S^1 \times \RR$. 
+Just as in the case of Chern-Simons, we can look at solutions to the equations of motion that are constant along $\RR$, to get some moduli space of connections on $\Sigma \times S^1$. 
+
+The analysis above says that for each point $t \in S^1$ the equation of motion dictate that we have a holomorphic bundle $V_t$ on $\Sigma$. 
+As we go around the circle, monodromy along the flat connection in the $S^1$ direction implies that we obtain a non-trivial isomorphism of holomorphic bundles $\phi : V_0 \cong V_{2 \pi}$. 
+Thus, the moduli space of solutions to the equations of motion on $\Sigma \times S^1$ is (roughly)
+\ben
+\sM = \{{\rm holomorphic \; bundles \; on} \; \Sigma \; {\rm with\;isomorphism}\} .
+\een
+This moduli can also be identified with the space of ``multiplicative Higgs bundles". 
+It's also equivalent to the moduli of periodic monopoles on $\Sigma \times S^1$. 
+This is a symplectic moduli space (in fact holomorphic symplectic), just as in the Chern-Simons case.
+
+We will work formally near a trivial connection so that we may as well work on $\CC_z \times \RR_t$. 
+Deformations of the symplectic moduli space near the trivial connection are controlled by the dg Lie algebra 
+\ben
+\Omega^{0,*}(\CC) \tensor \Omega^*(\RR) \tensor \fg .
+\een 
+Thus, if we perturb around the trivial connection, functions on the moduli space can be identified with
+\ben
+C^*(\Omega^{0,*} (\CC) \tensor \Omega^*(\RR) \tensor \fg) .
+\een 
+The symplectic structure equips this space with a Poisson bracket. 
+The quantum gauge theory concerns the deformation quantization for the bracket. 
+We have the following picture, which we hope bears resemblance to the three-dimensional Chern-Simons picture.
+\ben
+\begin{tikzcd}
+\sO_{\hbar} (\sM) \ar[d, "\hbar \to 0"'] & \simeq & C^*(\Omega^{0,*} (\CC) \tensor \Omega^*(\RR) \tensor \fg) & C_{\hbar}^*(\fg [z]) \ar[l, hook',"\simeq"'] \arrow[d, "\hbar \to 0"'] \arrow[r, leftrightarrow, "{\rm Koszul}"] & \boxed{Y_{\hbar} (\fg)} \arrow[d,"\hbar \to 0"]  \\
+\sO (\sM) & \simeq & C^*(\Omega^{0,*} (\CC) \tensor \Omega^*(\RR) \tensor \fg) & C^*(\fg[z]) \ar[l, hook', "\simeq"'] \arrow[r, leftrightarrow, "{\rm Koszul}"'] & U(\fg[[z]]) .
+\end{tikzcd}
+\een
+
+To formulate a more systematic statement about the relationship between the Yangian quantum group and the quantum field theory, we step back and discuss the theory of factorization algebras. 
+
+\section{BV in broad strokes}
+
+The main result of Costello \cite{CosYangian} that we study in this seminar connects the geometry of a four-dimensional gauge theory to the algebra of quantum group deformations. 
+The system of ideas that allows one to make this connection is that of {\em factorization algebras}. 
+On the physics side, the guiding principal of Costello-Gwilliam \cite{CG1, CG2} is that the observables, or operators, of a quantum field theory have the structure of a factorization algebra. 
+On the geometric side, this says that once one takes into account a sufficient amount of locality on the manifold, the functions on the moduli space of connections (or more interestingly, a deformation thereof) form a factorization algebra in a natural way.  
+
+The following picture portrays the general landscape of the theory of factorization algebras. 
+\ben
+\begin{tikzcd}
+\left\{ \begin{array}{c} {\rm Chiral/vertex\; algebras} \\ {\rm (BD, BZF, \;etc..)} \end{array} \right\} \ar[dr, hook] & & \left\{ \begin{array}{c} {\rm Algebras\;over\;other} \\ {\rm (colored)\;operads.} \\ {\rm (Riem, cplx, conformal,...)} \end{array} \right\} \ar[dl, hook'] \\
+& \left\{ \begin{array}{c} {\rm Factorization\;algebras} \end{array} \right\} & \\
+& \left\{ \begin{array}{c} {\rm Locally\;constant} \\ {\rm factorization\;algebras} \end{array} \right\} \ar[u, hook] & \\
+& \left\{ \begin{array}{c} \sE_n {\rm \;algebras} \end{array} \right\} \ar[u,equal, "{\rm Lurie}"] & .
+\end{tikzcd}
+\een
+Perhaps the most well-known class of factorization algebras are the {\em locally constant} ones.
+These are factorization algebras defined on a smooth manifold that roughly only depend on homeomorphism type of the manifold. 
+In particular, this class of factorization algebras see no difference between open balls of varying radius. 
+It is a theorem of Lurie \cite{LurieHA} that this class of factorization algebras is equivalent to the theory of $E_n$-algebras; algebras over the operad of little $n$-disks. 
+
+This is quite a restrictive class of factorization algebras. 
+In addition to locally constant factorization type, we will also encounter factorization algebras that {\em holomorphic}. 
+These are algebras that are sensitive to complex structures. 
+
+Let's move back to the gauge theory at hand. 
+From a geometric or physical point of view, one views the fields of the theory as coming from the smooth sections of some vector bundle. 
+For the Yangian theory, the fields take the following form
+\ben
+\Omega^{0,*}(\Sigma) \tensor \Omega^*(S) \tensor \fg[1] .
+\een 
+All the interesting moduli space data is encoded from the dg Lie algebra structure on the object above, together with some shifted symplectic pairing. 
+
+If $E$ is any (graded) vector bundle on a manifold $X$, we can form the infinite symmetric product
+\ben
+\Sym^*(E) = \ul{\CC} \oplus E \oplus \Sym^2(E) \oplus \cdots .
+\een 
+This is an infinite dimensional vector bundle on $X$, with a nice topology coming from the natural filtration by symmetric degree.
+
+\begin{fact} For any vector bundle, the cosheaf of compactly supported sections of $\Sym^*(E)$:
+\ben
+U \subset X \mapsto \Gamma_c(U, \Sym^*(E))
+\een
+has the structure of a factorization algebra.
+\end{fact}
+
+\subsection{Example: Chern-Simons factorization algebra}
+
+Generically speaking, all the factorization algebras we consider arise as deformations of factorization algebras of this above type. 
+Chern-Simons is no exception.
+On a $3$-manifold, the fields of Chern-Simons theory are also of this form:
+\ben
+\Omega^*(M^3) \tensor \fg [1] .
+\een 
+By definition, the classical observables supported on an open set $U$ are defined as the functions on fields supported on $U$. 
+Thus, for Chern-Simons, a linear observable on $U$ looks like a linear map of the form
+\ben
+O : \Omega^{*}(M) \tensor \fg [1] \to \CC .
+\een 
+Using Poincar\'{e} duality, we can read off that the space of all observables supported on $U$ is
+\ben
+\Obs_{CS}^{cl} (U) = \Sym^* \left( (\Omega^*(U) \tensor \fg[1])^\vee\right) = \Sym^* \left(\Omega_c^*(U) \tensor \fg^\vee [2] \right) .
+\een
+This cochain complex is equipped with the Chevalley-Eilenberg differential coming from the dg Lie algebra $\Omega^*(M) \tensor \fg$.
+
+\begin{rmk} Strictly speaking, we should really use the {\em distributional} compactly supported sections.
+\end{rmk}
+
+Chern-Simons is the typical example of a topological field theory. 
+In this setting, this means that the factorization algebra 
+\ben
+U \mapsto \Obs^{cl}(U)
+\een
+is locally constant.
+On the three-manifold $M = \RR^3$ this implies, by Lurie's theorem, that the observables determine an $\sE_3$-algebra. 
+
+For Chern-Simons, the quantum group can be shown to arise in the following way. 
+This is currently work in progress of Costello-Francis-Gwilliam. 
+The $E_3$-algebra has an associated category of modules $\Mod_{\Obs_{CS}}$. 
+By the general technology of factorization algebras, this category is equipped with an $\sE_2$-monoidal structure (i.e. an $\sE_2$-algebra in the category of categories). 
+Concretely, this means there is a two-dimensional space in which one can take the tensor product of two modules. 
+In geometric terms, we can view a module for the $\sE_3$-algebra as living on a line in $\RR^3$.
+The tensor product corresponds to an ``operator product" of lines.
+Since the space orthogonal to a line in $\RR^3$ is a copy of $\RR^2$, this gives two directions in which a tensor product can take place. 
+In more classical terms, $\sE_2$-monoidal categories arise as {\em braided monoidal} categories. 
+It is known that the modules for a quasi-triangular Hopf algebra form a braided monoidal category. 
+The connection to Chern-Simons is the following:
+
+\begin{thm}[Costello-Francis-Gwilliam]
+The braided monoidal category of finite dimensional representations of the quantum group $U_{\hbar} \fg$ is equivalent to a subcategory of the braided monoidal category of modules for the $\sE_3$-algebra $\Obs_{CS}$. 
+\end{thm}
+
+\subsection{The observables of a QFT}
+
+It is completely geometric that the {\em classical} observables (function on sections of some vector bundle) have the structure of a factorization algebra. 
+Generically, these factorization algebras have the form
+\ben
+\Obs^{cl} = \left(\Sym( \sE^\vee), Q^{cl}\right),
+\een
+where $Q^{cl}$ is the classical differential. 
+In the contexts we have addressed, the classical differential behaves like a Chevalley-Eilenberg differential computing Lie algebra cohomology. 
+
+The Batalin-Vilkovisky formalism is an approach developed by Costello in \cite{CosBook} to construct the path integral in a rigorous way.
+At the level of observables, a quantization produces a factorization algebra of the form
+\ben
+\Obs^q = \left(\Sym(\sE^\vee) [[\hbar]] , Q_\hbar = Q^{cl} + \hbar Q^{(1)} + \hbar^2 Q^{(2)} + \cdots\right),
+\een
+where $Q_\hbar$ is the {\em quantum} differential.
+
+There is a precise analogy of the BV formalism with ordinary deformation quantization.
+The classical observables are always equipped with some structure of a (shifted) Poisson algebra. 
+The factorization algebra of quantum observables deforms this Poisson structure. 
+
+Extreme care must be taken when defining the quantum differential rigorously.
+This is related to the difficulties in defining the path integral.  
+For instance, naively the terms in the differential $Q^{(i)}$ for $i \geq 1$ have support {\em everywhere} on the spacetime manifold. 
+This makes the process of defining the factorization algebra, which is really a local object, a tricky one. 
+
+%\subsection{Koszul duality}
+%
+%\def\Mod{\mathsf{Mod}}
+%\def\RRHom{\RR{\rm Hom}}
+%\def\Ext{{\rm Ext}}
+%
+%Koszul duality is an algebraic phenomena that occurs in the context of augmentated algebras.
+%Let $A$ be an associative dg algebra. 
+%An augmentation of a $\CC$-algebra $A$ is a homomorphism of algebras $\epsilon : A \to \CC$. 
+%This augmentation equips $\CC$ with the structure of an $A$-module that we denote $\CC_{\epsilon}$. 
+%
+%Categorically, Koszul duality asserts an equivalence between certain categories of modules.
+%Since $A$ is a dg algebra, its category of dg modules $\Mod_A$ has the structure of a dg category. 
+%This means, given dg modules $M,N$ there is a cochain complex of homomorphisms from $M$ to $N$ that we denote by 
+%\ben
+%\RRHom_A (M, N) .
+%\een
+%%The cohomology of this complex is denoted $\Ext_A(M,N)$. 
+%
+%Since an augmentation makes $\CC = \CC_\epsilon$ into an $A$-module, we can consider the cochain complex
+%\ben
+%A^{!} = \RRHom_A(\CC_{\epsilon}, \CC_{\epsilon})
+%\een
+%Since the (derived) endomorphisms of any module have the structure of a dg algebra, the cochain complex $A^{!}$ also has the structure of a dg algebra. 
+%This dg algebra is called the {\em Koszul dual} of $A$. 
+%
+%\begin{eg} Let $(V, \d)$ be any cochain complex and consider the {\em commutative} dg algebra $\Sym^*(V) = \oplus_{n \geq 0} \Sym^n(V)$.
+%Then, $\Sym^*(V)$ has a natural augmentation $\Sym^*(V) \to \Sym^0(V) = \CC$.  
+%The Koszul dual of $\Sym^*(V)$ with respect to this augmentation is equal to the exterior algebra
+%\ben
+%\Sym^*(V^\vee[-1]) 
+%\een
+%where $V^\vee [-1]$ is the dual vector space placed in cohomological degree $+1$. 
+%Note that if we forget the grading, this dg algebra is the usual exterior algebra $\wedge^* V^\vee$. 
+%
+%As a deformation of this example, one can show that for any dg Lie algebra $\fg$, the Koszul dual of the universal enveloping algebra $U(\fg)$ is the dg commutative algebra of Chevalley-Eilenberg cochains $\clie^*(\fg)$. 
+%\end{eg}
+%
+%The formal statement of Koszul duality asserts an equivalence of categories between some subcategory of dg $A$-modules and some subcategory of dg $A^{!}$-modules.
+%
+%What is the relationship between this algebraic manipulation of Koszul duality and gauge theory? 
+%Consider a theory defined on a manifold of the form
+%\ben
+%\RR_t \times \RR^n .
+%\een
+%Assume, further, that the theory is topological in the $\RR_t$ direction. 
+%Equivalently, the factorization algebra restricted to $\RR_t \times \{x\}$ is locally constant for all $x \in \RR^n$.
+%Let $\sA$ be the factorization algebra on $\RR_t$ restricted to $\RR_t \times \{0\}$. 
+%Then, by local constancy, we know that $\sA$ is equivalent to an $\sE_1$, or dg associative, algebra. 
+%Suppose, in addition 
+%
+%We study the problem of coupling a ``line operator" placed at $\RR_t \times \{0\}$ to the theory on $\RR_t \times \RR^n$. 
+%Factorization along the line gives such an operator the structure of an associative algebra $\sB$. 
+%It turns out, that such a coupling is equivalent to a Maurer-Cartan element in the dg algebra 
+%\ben
+%\sA \tensor \sB .
+%\een 
+%
+%\begin{prop}[Lurie] Suppose $\sA$ is augmented. 
+%Then, Maurer-Cartan elements $\alpha$ in the dg algebra $\sA \tensor \sB$ such that $\epsilon(\alpha) = 0$ are equivalent to maps of algebras
+%\ben
+%\alpha : \sA^! \to \sB .
+%\een
+%\end{prop}
+
+
+\section{The plan for the course}
+
+We will mostly consider the four-dimensional gauge theory on
+\ben
+\CC_z \times \RR^2_w .
+\een
+As pointed out in the last section, the quantum gauge theory produces a factorization algebra of observables $\Obs^q$ on $\CC \times \RR^2$. 
+This is the main object of study. 
+
+For each fixed $z_0$, one can restrict the factorization algebra $\Obs^q$ to the submanifold 
+\ben
+\{z_0\} \times \RR^2_w .
+\een 
+Denote this restriction by $\Obs_{z_0}^q$. 
+
+\begin{lem}
+The factorization algebra $\Obs^q_{z_0}$ is locally constant, and hence equivalent to an $\sE_2$-algebra.
+\end{lem}
+
+This is not just any $\sE_2$-algebra, it is actually an {\em augmented} $\sE_2$-algebra.
+This will be a very important property.
+
+We now do something kind of funny: any $\sE_2$-algebra can be considered as an $\sE_1$-algebra. 
+Viewing the $\sE_2$-algebra as an algebra over the operad of little $2$-disks, we can simply project the $2$-disk onto a horizontal line.
+Thus, there is a forgetful functor from $\sE_2$-algebras to $\sE_1$-algebras, which we can think of as dg associative algebras (up to homotopy).
+
+\begin{thm}[\cite{Tamarkin}]
+Suppose $A$ is an $\sE_2$-algebra that is augmented as an $\sE_1$-algebra. 
+Then, its ($\sE_1$) Koszul dual algebra $A^{!}$ has the structure of a {\em Hopf algebra} (up to homotopy). 
+\end{thm}
+
+This theorem does not directly apply to our situation. 
+Our algebras are built from infinite dimensional vector spaces, and to discuss Koszul duality rigorously we must really take 
+into account some natural filtration. 
+Nevertheless, there is a modification of Tamarkin's theorem that does apply. 
+
+We can now state Costello's first theorem.
+
+\begin{thm}[\cite{CosYangian}] 
+For any $z_0 \in \CC$, the Koszul dual of the $\sE_2$-algebra $\Obs^q_{z_0}$ is equivalent to the Yangian $Y_\hbar(\fg)$. 
+\end{thm}
+
+\def\Fin{\mathsf{Fin}}
+\def\Perf{\mathsf{Perf}}
+This implies the following statement for categories of modules. 
+If $\Fin(Y_\hbar\fg)$ denotes the monoidal dg category of finite-rank $Y_\hbar \fg$-modules, and $\Perf(\Obs_{z_0})$ denotes the monoidal dg category of perfect $\Obs_{z_0}$-modules, then by the general yoga of Koszul duality, there is an equivalence of monoiodal dg categories 
+\ben
+\Fin(Y_\hbar \fg) \simeq \Perf(\Obs_{z_0}) .
+\een
+
+Some formal manipulations in factorization algebras allow one to extract interesting consequences of this theorem. 
+Here is one of them.
+Consider placing the factorization algebra $\Obs_{z_0}$ on the punctured plane $(\RR^2_w)^\times \subset \RR^2_w$. 
+Then, the pushforward of this along the radial projection
+\ben
+r : (\RR^2_w)^\times \to \RR_{>0}
+\een
+has the structure of a one-dimensional locally constant factorization algebra. 
+Hence, $r_* \Obs_{z_0}$ is identified with a dg associative algebra. 
+By work of Lurie and Francis-Ayala, this associative algebra is equivalent to the Hochschild homology
+\ben
+HH_*(\Obs_{z_0}) \simeq r_*(\Obs_{z_0}) .
+\een 
+The Hochschild homology of any $\sE_2$-algebra is an associative algebra.
+Since pushforward and Hochschild homology is compatible with Koszul duality, we observe that the Theorem implies an equivalence of dg associative algebras
+\ben
+r_*(\Obs_{z_0}) \simeq HH_*(\Obs_{z_0}) \simeq HH_*(\Fin({Y_{\hbar} \fg}))
+\een 
+We have just mentioned the first quasi-isomorphism. 
+The second one follows from the fact that the Hochschild homology of any $\sE_2$ algebra $A$ is quasi-isomorphic as $\sE_1$-algebras to the Hochschild homology of its category of perfect modules. 
+Further, $\Perf(\Obs_{z_0}) \simeq \Fin(Y_\hbar \fg)$ by the main theorem. 
+
+This gives us an explicit way of realizing representations of the Yangian inside of the four-dimensional gauge theory. 
+We can rightfully view $r_*(\Obs_{z_0})$ as the value of the factorization algebra on a circle $\{z_0\} \times S^1_w$. 
+Given a finite dimensional representation $V$ of $Y_\hbar \fg$ we can consider its trace
+\ben
+{\rm Tr}_V : Y_\hbar \fg \to \CC .
+\een 
+This trace is a character, hence determines an element ${\rm Tr}_V \in HH_0({\rm Fin}(Y_\hbar \fg))$. 
+This theorem implies that characters for the Yangian appear as ``Wilson loops" in the four-dimensional gauge theory.
+
+So far we have been primarily concerned with the factorization algebra in the topological $\RR^2_w$-direction. 
+What extra structure does the factorization in the $\CC_z$ direction buy us?
+Note that the theory is {\em not} locally constant in the $\CC_z$-direction. 
+In fact, it is {\em holomorphic}, so the factorization structure actually induces a sort of operator product expansion (OPE) just as in the theory of vertex algebras. 
+
+The way to codify this is to consider the operator product expansion between a small disk placed at $z = z_0$ and a small disk placed at $z= z_0 + \lambda$, where $\lambda \in \CC^\times$. 
+By holomorphicity, we can write the OPE as
+\ben
+F_{OPE} : \Obs_{z_0} \tensor \Obs_{z_0} \to \Obs_{z_0} ((\lambda)),
+\een
+where now $\lambda$ plays a formal role. 
+By the main theorem, we can identify this with a monoidal bifunctor of the form
+\ben
+F_{OPE} : \Fin(Y_\hbar \fg) \times \Fin (Y_{\hbar} \fg) \to \Fin(Y_\hbar \fg) ((\lambda)) .
+\een 
+
+\begin{thm} The map $F_{OPE}$ encodes Drinfeld's universal $R$-matrix 
+\ben
+R(\lambda) \in Y_\hbar(\fg) \tensor Y_{\hbar}(\fg) ((\lambda)) .
+\een
+Thus, the factorization product in the $\CC_z$-direction encodes the universal $R$-matrix.
+\end{thm}
+
+We can state this result in a more categorical framework as follows.
+We have just mentioned that the theory spits out a factorization algebra {\em on} $\CC_z$ {\em with values in $\sE_2$-algebras}. 
+As above, every $\sE_2$-algebra admits a module category that is monoidal.
+In particular, we have a factorization algebra on $\CC$ with values in the monoidal category of modules. 
+By the main theorem, this factorization algebra is equivalent to a factorization algebra on $\CC$ with values in the monoidal category of modules for $Y_\hbar \fg$. 
+This witnesses a structure in the category $\Fin(Y_\hbar(\fg))$ that is not so obvious: in addition to being monoidal, it is also a {\em chiral category}.
+
+To set up the analogy with Chern-Simons, consider the following. 
+Placing Chern-Simons on the three-manifold $\Sigma \times \RR$ allows us to think about the theory as maps from $\RR$ to local systems on $\Sigma$. 
+At the level of factorization algebras, in the case $\Sigma = \RR^2$, this says that we have an $\sE_1$-algebra with values in $\sE_2$-algebras.
+If we look at modules for the $\sE_2$-algebra, we obtain a $\sE_1$-algebra in $\sE_1$-categories, so an $\sE_2$-category.
+
+We think about the Yangian as being equivalent to maps from $\CC$ to the moduli of flat connections on $S = \RR^2$.
+On $\CC$, the theory is holomorphic, so we obtain a chiral, or vertex algebra, with values in $\sE_2$-algebras. 
+Looking at modules, we get a chiral algebra in $\sE_1$-categories. 
+This is what we should call a ``chiral monoidal category". 
+ 
+%\input{first section}
+\bibliographystyle{alpha}
+%\bibliographystyle{spmpsci}  
+\bibliography{syllabus}
+
+\end{document}

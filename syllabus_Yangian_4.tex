@@ -22,15 +22,14 @@
 \begin{document}
 \maketitle
 
-The purpose of this course is to explore a connection between a certain class of gauge theories defined on complex surfaces and deformations of infinite dimensional Lie algebras. 
-Mathematically, a gauge theory involves studying certain properties of connections defined on bundles over a smooth manifold. 
-Often these theories are motivated from physics (such as supersymmetric gauge theories), but often have neat and concise mathematical descriptions. 
-The type of infinite dimensional Lie algebras we study are of the form $\fg[[z]]$ where $z$ is a formal variable. 
-The {\em Yangian} deformations are a type of quantum group, and are realized as deformations of the universal enveloping algebra $U(\fg[[z]])$. 
-These deformations have appeared in various mathematical contexts, most notably in the theory of integrable systems and statistical mechanics.
+\brian{Valerio, can you add that first paragraph about quantum groups? I've deleted mention of it below. Maybe something like: The type of infinite dimensional Lie algebras we study are of the form $\fg[[z]]$ where $z$ is a formal variable.....The {\em Yangian} deformations are a type of quantum group, and are realized as deformations of the universal enveloping algebra $U(\fg[[z]])$. These deformations have appeared in various mathematical contexts, most notably in the theory of integrable systems and statistical mechanics.}
+
+The purpose of this course is to explore a relationship between a certain class of gauge theories defined on four-manifolds and deformations of infinite dimensional Lie algebras. 
+Mathematically, a gauge theory involves studying connections defined on bundles over a smooth manifold. 
+These theories are motivated from physics (Yang-Mills gauge theory), but often have neat and concise mathematical descriptions. 
 
 The gauge theory we study is defined on manifolds of the form $\Sigma \times S$ where $\Sigma$ is Riemann surface and $S$ is a real two-dimensional manifold. 
-Mathematically, the class of connections defining the gauge theory are, in a precise sense, {\em holomorphic} in the direction of $\Sigma$ and {\em flat} in the direction of $S$. 
+Mathematically, the class of connections defining the gauge theory are, in a precise sense, {\em holomorphic} in the direction of $\Sigma$ and {\em flat} in the direction of $S$.  
 The connection between gauge theory and quantum groups we will study is similar in spirit to perhaps a more well-studied relationship between Chern-Simons theory, the study of flat connections on three-manifolds, and quantum groups.
 
 We follow the seminal work of Costello \cite{CosInt, CosYangian} showing how Yangians arise from the algebra of operators of the four-dimensional gauge theory.
@@ -42,36 +41,32 @@ Time permitting, we can focus on more concrete and computational sides of the pr
 
 {\bf Some keywords}: Factorization algebras, Koszul duality, quantum groups, Yangians, complex geometry. 
 
-{\bf Informal prerequisites}: Basic category theory, homological algebra, and Lie algebras.
+{\bf Informal prerequisites}: \ul{No background in physics is necessary!} Basic category theory, homological algebra, and rudiments of Lie algebras.
 Knowledge of some basic differential geometry including vector bundles, connections, and differential forms. 
 
-{\bf Instructors:} Chris Beasley, Valerio Toledano-Laredo, Brian Williams \brian{more}?
+{\bf Organizers:} Chris Beasley, Valerio Toledano Laredo, Brian Williams
+
+{\bf Time/Place} Tuesdays, 3:30 PM -- 7:30 PM 
 
 \subsection*{Detailed (approximate) syllabus}
 
 \begin{itemize}
 
-\item[Week 1, Sep 4--7] 
+\item[Week 1, Sep 11]
 
-{\em An introduction to factorization algebras}.  
+{\em Introduction.} Speaker: Brian 
+
+\item[Week 2, Sep 18] 
+
+{\em An introduction to factorization algebras}. Speaker: Ryan Mickler.
+
 The definition of a factorization algebra with values in a symmetric monoidal category.
 Lurie's result that locally constant factorization algebras on $\RR^n$ are equivalent to $E_n$-algebras. 
 Hochschild homology as a special case of factorization homology.
 \cite{CG1, LurieHA, AFTopMan}.
 
 
-
-\item[Week 2, Sep 10--14]
-
-{\em Holomorphic factorization algebras and vertex algebras}. 
-Background on vertex algebras.
-Describe functor from the category of holomorphic factorization algebras to vertex algebras.
-Relationship to {\em chiral algebras} of Beilinson-Drinfeld. 
-\cite{CG1, BD}. 
-
-
-
-\item[Week 3, Sep 17--21] 
+\item[Week 3, Sep 25]
 
 {\em Koszul duality for $E_n$-algebras}.
 Categories of (co)modules for $E_n$-algebras.
@@ -81,49 +76,52 @@ Interplay between Hochschild homology and Koszul duality.
 \cite{CosYangian, Tamarkin}.
 
 
-
-\item[Week 4, Sep 24--28] 
-
-{\em Quantum groups and the Yangian}.
-\brian{Not sure exactly how to structure this, some input would be greatly appreciated!}
-Drinfeld's universal $R$-matrix. 
-Relationship to integrable systems and lattice models.
-\cite{Etingof, ChariPressley}
-
-\item[Week 5, Oct 1--5] {\em ``Four-dimensional Chern-Simons theory"}.
-The moduli space of holomorphic, partially flat, connections on a complex surface.\footnote{Roughly, a holomorphic partially flat connecton on a complex manifold of the form $X \times Y$ is a holomorphic connection that is holomorphically flat in the $Y$-direction.}
+\item[Week 4, Oct 2] {\em ``Four-dimensional Chern-Simons theory"}.
+The moduli space of holomorphic, partially flat, connections on a complex surface.
+%\footnote{Roughly, a holomorphic partially flat connecton on a complex manifold of the form $X \times Y$ is a holomorphic connection that is holomorphically flat in the $Y$-direction.}
 The moduli space of multiplicative Higgs bundles on a Riemann surface.
 
-\item[Week 6, Oct 9--12] {\em Batalin-Vilkovisky quantization and renormalization}.
+
+\item[Week 5, Oct 9] {\em Batalin-Vilkovisky quantization and renormalization}.
 An introduction to BV quantization for gauge theories.
 
-\item[Week 7, Oct 15--19] {\em Batalin-Vilkovisky quantization and renormalization (cont.)}.
 
-\item[Week 8, Oct 22--26] {\em Observables of the four-dimensional gauge theory}.
+\item[Week 6, Oct 16] {\em Batalin-Vilkovisky quantization and renormalization (cont.)}.
+
+\item[Week 7, Oct 23] {\em Observables of the four-dimensional gauge theory}.
 Deformation of functions on the classical moduli space defined by BV quantization to small orders in $\hbar$. 
 Line operators and a generalized version of ``conformal blocks" from CFT. 
 \cite{CosBook, CG2, CosYangian}
 
-\item[Week 9, Oct 29--Nov 2] {\em Costello's main result}.
+\item[Week 8, Oct 30] {\em Costello's main result}.
 \begin{thm}
 The Koszul dual of the $E_2$-algebra of quantum observables of four-dimensional Chern-Simons theory on $\CC_z \times \RR^2_w$ (restricted to a factorization algebra on $\{z=0\} \times \RR^2_w$) is Koszul dual to the Yangian Hopf algebra. 
 \end{thm}
 \cite{CosBook, CG2, CosYangian,CWY1,CWY2}
 
-\item[Week 10, Nov 5--9] {\em Holomorphic factorization and the universal $R$-matrix}
-The quantum OPE as a map of $E_2$-algebras.
-Hochschild homology for categories.
-\cite{CosYangian}.
+\item[Week 9, Nov 6] {\em Quantum groups and the Yangian}.
+%\brian{Not sure exactly how to structure this, some input would be greatly appreciated!}
+Drinfeld's universal $R$-matrix. 
+Relationship to integrable systems and lattice models \cite{Etingof, ChariPressley}.
 
-\item[Week 11, Nov 13--16] {\em The quantum Yang-Baxter equation}
+
+\item[Week 10, Nov 13] {\em Holomorphic factorization and the universal $R$-matrix}
+Background on vertex algebras.
+Describe functor from the category of holomorphic factorization algebras to vertex algebras.
+Relationship to {\em chiral algebras} of Beilinson-Drinfeld. 
+\cite{CG1, BD}. 
+The quantum OPE as a map of $E_2$-algebras.
+Hochschild homology for categories \cite{CosYangian}.
+
+\item[Week 11, Dec 4] {\em The quantum Yang-Baxter equation}
 How the quantum master equation for BV quantization implies the quantum Yang-Baxter equation.
 \cite{CWY1,CWY2}.
 
-\item[Weeks ??] 
-
-Enhancements and variations of the construction. 
+\item[Week 12, Dec 11] {\em Enhancements and variations of the construction.}
 Realizing various spin systems by tweaking the input data. 
 Coupling to surface operators. 
+
+\item[Weeks ??] 
 
 \end{itemize} 
 
