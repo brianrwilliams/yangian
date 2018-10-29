@@ -22,6 +22,182 @@
 \begin{document}
 \maketitle
 
+In very broad strokes, our goal is extract quantum groups from factorization algebras defined on certain manifolds.
+For some examples the manifold is simply a copy of Euclidean space. 
+The Yangian quantum group will come from a factorization algebra on $\CC \times \RR^2 = \RR^4$, where, in some sense, we remember the complex structure on the copy of Euclidean space $\CC = \RR^2$.
+
+\section{What is a factorization algebra?}
+
+Let $X$ be a manifold. (Think: spacetime.)
+
+{A {\em prefactorization algebra} $\sF$ on $X$~is:}
+{\small 
+\begin{itemize}
+\item {a vector space $\sF(U)$ for each open set $U \subset M$}
+
+\item {a linear map $\sF(U) \rightarrow \sF(V)$ for each inclusion $U \subset V$}
+
+\item {a linear map $\sF(U_1) \otimes \cdots \otimes \sF(U_n) \rightarrow \sF(V)$ for each $U_1,\ldots,U_n \subset V$ with the $U_i$ pairwise disjoint.}
+
+\end{itemize}
+}
+satisfying
+\begin{itemize}
+\item {equivariance under relabeling} 
+\item {associativity under composition: if $U_{i,1}\sqcup\cdots\sqcup U_{i,n_i}\subseteq V_i$ and $V_1\sqcup\cdots\sqcup V_k\subseteq W$, the following diagram commutes:}
+\[
+\xymatrix{
+{\bigotimes}^{k}_{i=1}{\bigotimes}^{n_i}_{j=1}\sF(U_j) \ar[dr] \ar[rr] &   &{\bigotimes}^k_{i=1}\sF(V_i) \ar[dl]\\
+&\sF(W)  &
+}
+\]
+\end{itemize}
+
+A prefactorization algebra $\sF$ on $X$ is a {\em factorization algebra} if it satisfies a certain gluing condition.
+Note that this is {\bf not} the ordinary gluing condition saying that the underlying precosheaf $\sF$ determines is a cosheaf. 
+
+The main result of Costello \cite{CosYangian} that we study in this seminar relates the geometry of a four-dimensional gauge theory to the algebra of quantum group deformations. 
+The connection to gauge theory and factorization algebras is the guiding principal of Costello-Gwilliam \cite{CG1, CG2}: 
+\begin{center}
+{\em The observables, or operators, of a quantum field theory have the structure of a factorization algebra.}
+\end{center}
+On the geometric side, this says that once one takes into account a sufficient amount of locality on the manifold, the functions on the moduli space of connections (or more interestingly, a deformation thereof) form a factorization algebra in a natural way.  
+
+The following picture portrays the general landscape of the theory of factorization algebras. 
+\ben
+\begin{tikzcd}
+\left\{ \begin{array}{c} {\rm Chiral/vertex\; algebras} \\ {\rm (BD, BZF, \;etc..)} \end{array} \right\} \ar[dr, hook] & & \left\{ \begin{array}{c} {\rm Algebras\;over\;other} \\ {\rm (colored)\;operads.} \\ {\rm (Riem, cplx, conformal,...)} \end{array} \right\} \ar[dl, hook'] \\
+& \left\{ \begin{array}{c} {\rm Factorization\;algebras} \end{array} \right\} & \\
+& \left\{ \begin{array}{c} {\rm Locally\;constant} \\ {\rm factorization\;algebras} \end{array} \right\} \ar[u, hook] & \\
+& \left\{ \begin{array}{c} \sE_n {\rm \;algebras} \end{array} \right\} \ar[u,equal, "{\rm Lurie}"] & .
+\end{tikzcd}
+\een
+Perhaps the most well-known class of factorization algebras are the {\em locally constant} ones.
+These are factorization algebras defined on a smooth manifold that roughly only depend on homeomorphism type of the manifold. 
+In particular, this class of factorization algebras see no difference between open balls of varying radius. 
+It is a theorem of Lurie \cite{LurieHA} that this class of factorization algebras is equivalent to the theory of $E_n$-algebras; algebras over the operad of little $n$-disks. 
+
+This is quite a restrictive class of factorization algebras. 
+In addition to locally constant factorization type, we will also encounter factorization algebras that {\em holomorphic}. 
+These are algebras that are sensitive to complex structures. 
+
+%Let's move back to the gauge theory at hand. 
+%From a geometric or physical point of view, one views the fields of the theory as coming from the smooth sections of some vector bundle. 
+%For the Yangian theory, the fields take the following form
+%\ben
+%\Omega^{0,*}(\Sigma) \tensor \Omega^*(S) \tensor \fg[1] .
+%\een 
+%All the interesting moduli space data is encoded from the dg Lie algebra structure on the object above, together with some shifted symplectic pairing. 
+
+\begin{eg}
+If $E$ is any (graded) vector bundle on a manifold $X$, we can form the infinite symmetric product
+\ben
+\Sym^*(E) = \ul{\CC} \oplus E \oplus \Sym^2(E) \oplus \cdots .
+\een 
+This is an infinite dimensional vector bundle on $X$, with a nice topology coming from the natural filtration by symmetric degree.
+\end{eg}
+
+\begin{fact} For any vector bundle, the cosheaf of compactly supported sections of $\Sym^*(E)$:
+\ben
+U \subset X \mapsto \Gamma_c(U, \Sym^*(E))
+\een
+has the structure of a factorization algebra.
+\end{fact}
+
+All of the examples of factorization algebras we encounter is this seminar arise as deformations of ones of this form (or by replacing compactly supported sections by distributional compactly supported sections).
+
+\subsection{The observables of a QFT}
+
+It is completely geometric that the {\em classical} observables (function on sections of some vector bundle) have the structure of a factorization algebra. 
+Generically, these factorization algebras have the form
+\ben
+\Obs^{cl} = \left(\Sym( \sE^\vee), Q^{cl}\right),
+\een
+where $Q^{cl}$ is the classical differential. 
+In the contexts we have addressed, the classical differential behaves like a Chevalley-Eilenberg differential computing Lie algebra cohomology. 
+
+The Batalin-Vilkovisky formalism is an approach developed by Costello in \cite{CosBook} to construct the path integral in a rigorous way.
+At the level of observables, a quantization produces a factorization algebra of the form
+\ben
+\Obs^q = \left(\Sym(\sE^\vee) [[\hbar]] , Q_\hbar = Q^{cl} + \hbar Q^{(1)} + \hbar^2 Q^{(2)} + \cdots\right),
+\een
+where $Q_\hbar$ is the {\em quantum} differential.
+
+There is a precise analogy of the BV formalism with ordinary deformation quantization.
+The classical observables are always equipped with some structure of a (shifted) Poisson algebra. 
+The factorization algebra of quantum observables deforms this Poisson structure. 
+
+Extreme care must be taken when defining the quantum differential rigorously.
+This is related to the difficulties in defining the path integral.  
+For instance, naively the terms in the differential $Q^{(i)}$ for $i \geq 1$ have support {\em everywhere} on the spacetime manifold. 
+This makes the process of defining the factorization algebra, which is really a local object, a tricky one. 
+
+%\subsection{Koszul duality}
+%
+%\def\Mod{\mathsf{Mod}}
+%\def\RRHom{\RR{\rm Hom}}
+%\def\Ext{{\rm Ext}}
+%
+%Koszul duality is an algebraic phenomena that occurs in the context of augmentated algebras.
+%Let $A$ be an associative dg algebra. 
+%An augmentation of a $\CC$-algebra $A$ is a homomorphism of algebras $\epsilon : A \to \CC$. 
+%This augmentation equips $\CC$ with the structure of an $A$-module that we denote $\CC_{\epsilon}$. 
+%
+%Categorically, Koszul duality asserts an equivalence between certain categories of modules.
+%Since $A$ is a dg algebra, its category of dg modules $\Mod_A$ has the structure of a dg category. 
+%This means, given dg modules $M,N$ there is a cochain complex of homomorphisms from $M$ to $N$ that we denote by 
+%\ben
+%\RRHom_A (M, N) .
+%\een
+%%The cohomology of this complex is denoted $\Ext_A(M,N)$. 
+%
+%Since an augmentation makes $\CC = \CC_\epsilon$ into an $A$-module, we can consider the cochain complex
+%\ben
+%A^{!} = \RRHom_A(\CC_{\epsilon}, \CC_{\epsilon})
+%\een
+%Since the (derived) endomorphisms of any module have the structure of a dg algebra, the cochain complex $A^{!}$ also has the structure of a dg algebra. 
+%This dg algebra is called the {\em Koszul dual} of $A$. 
+%
+%\begin{eg} Let $(V, \d)$ be any cochain complex and consider the {\em commutative} dg algebra $\Sym^*(V) = \oplus_{n \geq 0} \Sym^n(V)$.
+%Then, $\Sym^*(V)$ has a natural augmentation $\Sym^*(V) \to \Sym^0(V) = \CC$.  
+%The Koszul dual of $\Sym^*(V)$ with respect to this augmentation is equal to the exterior algebra
+%\ben
+%\Sym^*(V^\vee[-1]) 
+%\een
+%where $V^\vee [-1]$ is the dual vector space placed in cohomological degree $+1$. 
+%Note that if we forget the grading, this dg algebra is the usual exterior algebra $\wedge^* V^\vee$. 
+%
+%As a deformation of this example, one can show that for any dg Lie algebra $\fg$, the Koszul dual of the universal enveloping algebra $U(\fg)$ is the dg commutative algebra of Chevalley-Eilenberg cochains $\clie^*(\fg)$. 
+%\end{eg}
+%
+%The formal statement of Koszul duality asserts an equivalence of categories between some subcategory of dg $A$-modules and some subcategory of dg $A^{!}$-modules.
+%
+%What is the relationship between this algebraic manipulation of Koszul duality and gauge theory? 
+%Consider a theory defined on a manifold of the form
+%\ben
+%\RR_t \times \RR^n .
+%\een
+%Assume, further, that the theory is topological in the $\RR_t$ direction. 
+%Equivalently, the factorization algebra restricted to $\RR_t \times \{x\}$ is locally constant for all $x \in \RR^n$.
+%Let $\sA$ be the factorization algebra on $\RR_t$ restricted to $\RR_t \times \{0\}$. 
+%Then, by local constancy, we know that $\sA$ is equivalent to an $\sE_1$, or dg associative, algebra. 
+%Suppose, in addition 
+%
+%We study the problem of coupling a ``line operator" placed at $\RR_t \times \{0\}$ to the theory on $\RR_t \times \RR^n$. 
+%Factorization along the line gives such an operator the structure of an associative algebra $\sB$. 
+%It turns out, that such a coupling is equivalent to a Maurer-Cartan element in the dg algebra 
+%\ben
+%\sA \tensor \sB .
+%\een 
+%
+%\begin{prop}[Lurie] Suppose $\sA$ is augmented. 
+%Then, Maurer-Cartan elements $\alpha$ in the dg algebra $\sA \tensor \sB$ such that $\epsilon(\alpha) = 0$ are equivalent to maps of algebras
+%\ben
+%\alpha : \sA^! \to \sB .
+%\een
+%\end{prop}
+
+
 \section{Prelude: Chern-Simons and quantum groups}
 
 Chern-Simons theory is a three-dimensional topological field theory consisting of flat connections of a principal $G$-bundle. 
@@ -107,6 +283,59 @@ Note that as a cochain complex, there is a quasi-isomorphism $C^*(\Omega^*(\RR^2
 This picture hints at a more direct relationship between Chern-Simons theory and the quantum group, without passing through the theory of knot invariants. 
 Even so, knot invariants have a natural physical interpretation as line operators in the three-dimensional theory. 
 This picture is compatible with the approach we take to obtain the quantum group via factorization methods.
+
+\subsection{Example: Chern-Simons factorization algebra}
+
+We've been a bit naive here, and never discussed the actual algebraic structure the deformation $C^*_{\hbar}(\fg)$ possesses.
+To really understand this, we need to appeal to the theory of factorization algebras. 
+ 
+On a $3$-manifold, the fields of Chern-Simons theory are also of this form:
+\ben
+\Omega^*(M^3) \tensor \fg [1] .
+\een 
+By definition, the classical observables supported on an open set $U$ are defined as the functions on fields supported on $U$. 
+Thus, for Chern-Simons, a linear observable on $U$ looks like a linear map of the form
+\ben
+O : \Omega^{*}(M) \tensor \fg [1] \to \CC .
+\een 
+Using Poincar\'{e} duality, we can read off that the space of all observables supported on $U$ is
+\ben
+\Obs_{CS}^{cl} (U) = \Sym^* \left( (\Omega^*(U) \tensor \fg[1])^\vee\right) = \Sym^* \left(\Omega_c^*(U) \tensor \fg^\vee [2] \right) .
+\een
+This cochain complex is equipped with the Chevalley-Eilenberg differential coming from the dg Lie algebra $\Omega^*(M) \tensor \fg$.
+
+\begin{rmk} Strictly speaking, we should really use the {\em distributional} compactly supported sections.
+\end{rmk}
+
+Chern-Simons is the typical example of a topological field theory. 
+In this setting, this means that the factorization algebra 
+\ben
+U \mapsto \Obs^{cl}(U)
+\een
+is locally constant.
+Indeed, for each disk $D$ the classical observables are quasi-isomorphic to the Chevalley-Eilenberg complex $\Obs^{cl}(D) \simeq C^*(\fg)$. 
+On the three-manifold $M = \RR^3$ this implies, by Lurie's theorem, that the observables determine an $\sE_3$-algebra.
+In fact, classically, this is actually a commutative (or $\sE_\infty$-algebra). 
+
+BV quantization picks out a deformation $\Obs^q$ of $\Obs^{cl}$ as locally constant factorization algebras on $\RR^3$. 
+Equivalently, BV quantization determines a deformation $C^*_\hbar(\fg)$ of $C^*(\fg)$ {\em as an $\sE_3$-algebra}. 
+
+On one hand, we are claiming that the Koszul dual of this deformation of the quantum group.
+For Chern-Simons, the quantum group can be shown to also arise in the following, more geometric, way. 
+This is currently work in progress of Costello-Francis-Gwilliam. 
+The $E_3$-algebra has an associated category of modules $\Mod_{\Obs_{CS}}$. 
+By the general technology of factorization algebras, this category is equipped with an $\sE_2$-monoidal structure (i.e. an $\sE_2$-algebra in the category of categories). 
+Concretely, this means there is a two-dimensional space in which one can take the tensor product of two modules. 
+In geometric terms, we can view a module for the $\sE_3$-algebra as living on a line in $\RR^3$.
+The tensor product corresponds to an ``operator product" of lines.
+Since the space orthogonal to a line in $\RR^3$ is a copy of $\RR^2$, this gives two directions in which a tensor product can take place. 
+In more classical terms, $\sE_2$-monoidal categories arise as {\em braided monoidal} categories. 
+It is known that the modules for a quasi-triangular Hopf algebra form a braided monoidal category. 
+The connection to Chern-Simons is the following:
+
+\begin{thm}[Costello-Francis-Gwilliam]
+The braided monoidal category of finite dimensional representations of the quantum group $U_{\hbar} \fg$ is equivalent to a subcategory of the braided monoidal category of modules for the $\sE_3$-algebra $\Obs_{CS}$. 
+\end{thm}
 
 \section{The four-dimensional theory}
 
@@ -207,191 +436,8 @@ We have the following picture, which we hope bears resemblance to the three-dime
 \end{tikzcd}
 \een
 
-To formulate a more systematic statement about the relationship between the Yangian quantum group and the quantum field theory, we step back and discuss the theory of factorization algebras. 
-
-\section{BV in broad strokes}
-
-The main result of Costello \cite{CosYangian} that we study in this seminar connects the geometry of a four-dimensional gauge theory to the algebra of quantum group deformations. 
-The system of ideas that allows one to make this connection is that of {\em factorization algebras}. 
-On the physics side, the guiding principal of Costello-Gwilliam \cite{CG1, CG2} is that the observables, or operators, of a quantum field theory have the structure of a factorization algebra. 
-On the geometric side, this says that once one takes into account a sufficient amount of locality on the manifold, the functions on the moduli space of connections (or more interestingly, a deformation thereof) form a factorization algebra in a natural way.  
-
-The following picture portrays the general landscape of the theory of factorization algebras. 
-\ben
-\begin{tikzcd}
-\left\{ \begin{array}{c} {\rm Chiral/vertex\; algebras} \\ {\rm (BD, BZF, \;etc..)} \end{array} \right\} \ar[dr, hook] & & \left\{ \begin{array}{c} {\rm Algebras\;over\;other} \\ {\rm (colored)\;operads.} \\ {\rm (Riem, cplx, conformal,...)} \end{array} \right\} \ar[dl, hook'] \\
-& \left\{ \begin{array}{c} {\rm Factorization\;algebras} \end{array} \right\} & \\
-& \left\{ \begin{array}{c} {\rm Locally\;constant} \\ {\rm factorization\;algebras} \end{array} \right\} \ar[u, hook] & \\
-& \left\{ \begin{array}{c} \sE_n {\rm \;algebras} \end{array} \right\} \ar[u,equal, "{\rm Lurie}"] & .
-\end{tikzcd}
-\een
-Perhaps the most well-known class of factorization algebras are the {\em locally constant} ones.
-These are factorization algebras defined on a smooth manifold that roughly only depend on homeomorphism type of the manifold. 
-In particular, this class of factorization algebras see no difference between open balls of varying radius. 
-It is a theorem of Lurie \cite{LurieHA} that this class of factorization algebras is equivalent to the theory of $E_n$-algebras; algebras over the operad of little $n$-disks. 
-
-This is quite a restrictive class of factorization algebras. 
-In addition to locally constant factorization type, we will also encounter factorization algebras that {\em holomorphic}. 
-These are algebras that are sensitive to complex structures. 
-
-Let's move back to the gauge theory at hand. 
-From a geometric or physical point of view, one views the fields of the theory as coming from the smooth sections of some vector bundle. 
-For the Yangian theory, the fields take the following form
-\ben
-\Omega^{0,*}(\Sigma) \tensor \Omega^*(S) \tensor \fg[1] .
-\een 
-All the interesting moduli space data is encoded from the dg Lie algebra structure on the object above, together with some shifted symplectic pairing. 
-
-If $E$ is any (graded) vector bundle on a manifold $X$, we can form the infinite symmetric product
-\ben
-\Sym^*(E) = \ul{\CC} \oplus E \oplus \Sym^2(E) \oplus \cdots .
-\een 
-This is an infinite dimensional vector bundle on $X$, with a nice topology coming from the natural filtration by symmetric degree.
-
-\begin{fact} For any vector bundle, the cosheaf of compactly supported sections of $\Sym^*(E)$:
-\ben
-U \subset X \mapsto \Gamma_c(U, \Sym^*(E))
-\een
-has the structure of a factorization algebra.
-\end{fact}
-
-\subsection{Example: Chern-Simons factorization algebra}
-
-Generically speaking, all the factorization algebras we consider arise as deformations of factorization algebras of this above type. 
-Chern-Simons is no exception.
-On a $3$-manifold, the fields of Chern-Simons theory are also of this form:
-\ben
-\Omega^*(M^3) \tensor \fg [1] .
-\een 
-By definition, the classical observables supported on an open set $U$ are defined as the functions on fields supported on $U$. 
-Thus, for Chern-Simons, a linear observable on $U$ looks like a linear map of the form
-\ben
-O : \Omega^{*}(M) \tensor \fg [1] \to \CC .
-\een 
-Using Poincar\'{e} duality, we can read off that the space of all observables supported on $U$ is
-\ben
-\Obs_{CS}^{cl} (U) = \Sym^* \left( (\Omega^*(U) \tensor \fg[1])^\vee\right) = \Sym^* \left(\Omega_c^*(U) \tensor \fg^\vee [2] \right) .
-\een
-This cochain complex is equipped with the Chevalley-Eilenberg differential coming from the dg Lie algebra $\Omega^*(M) \tensor \fg$.
-
-\begin{rmk} Strictly speaking, we should really use the {\em distributional} compactly supported sections.
-\end{rmk}
-
-Chern-Simons is the typical example of a topological field theory. 
-In this setting, this means that the factorization algebra 
-\ben
-U \mapsto \Obs^{cl}(U)
-\een
-is locally constant.
-On the three-manifold $M = \RR^3$ this implies, by Lurie's theorem, that the observables determine an $\sE_3$-algebra. 
-
-For Chern-Simons, the quantum group can be shown to arise in the following way. 
-This is currently work in progress of Costello-Francis-Gwilliam. 
-The $E_3$-algebra has an associated category of modules $\Mod_{\Obs_{CS}}$. 
-By the general technology of factorization algebras, this category is equipped with an $\sE_2$-monoidal structure (i.e. an $\sE_2$-algebra in the category of categories). 
-Concretely, this means there is a two-dimensional space in which one can take the tensor product of two modules. 
-In geometric terms, we can view a module for the $\sE_3$-algebra as living on a line in $\RR^3$.
-The tensor product corresponds to an ``operator product" of lines.
-Since the space orthogonal to a line in $\RR^3$ is a copy of $\RR^2$, this gives two directions in which a tensor product can take place. 
-In more classical terms, $\sE_2$-monoidal categories arise as {\em braided monoidal} categories. 
-It is known that the modules for a quasi-triangular Hopf algebra form a braided monoidal category. 
-The connection to Chern-Simons is the following:
-
-\begin{thm}[Costello-Francis-Gwilliam]
-The braided monoidal category of finite dimensional representations of the quantum group $U_{\hbar} \fg$ is equivalent to a subcategory of the braided monoidal category of modules for the $\sE_3$-algebra $\Obs_{CS}$. 
-\end{thm}
-
-\subsection{The observables of a QFT}
-
-It is completely geometric that the {\em classical} observables (function on sections of some vector bundle) have the structure of a factorization algebra. 
-Generically, these factorization algebras have the form
-\ben
-\Obs^{cl} = \left(\Sym( \sE^\vee), Q^{cl}\right),
-\een
-where $Q^{cl}$ is the classical differential. 
-In the contexts we have addressed, the classical differential behaves like a Chevalley-Eilenberg differential computing Lie algebra cohomology. 
-
-The Batalin-Vilkovisky formalism is an approach developed by Costello in \cite{CosBook} to construct the path integral in a rigorous way.
-At the level of observables, a quantization produces a factorization algebra of the form
-\ben
-\Obs^q = \left(\Sym(\sE^\vee) [[\hbar]] , Q_\hbar = Q^{cl} + \hbar Q^{(1)} + \hbar^2 Q^{(2)} + \cdots\right),
-\een
-where $Q_\hbar$ is the {\em quantum} differential.
-
-There is a precise analogy of the BV formalism with ordinary deformation quantization.
-The classical observables are always equipped with some structure of a (shifted) Poisson algebra. 
-The factorization algebra of quantum observables deforms this Poisson structure. 
-
-Extreme care must be taken when defining the quantum differential rigorously.
-This is related to the difficulties in defining the path integral.  
-For instance, naively the terms in the differential $Q^{(i)}$ for $i \geq 1$ have support {\em everywhere} on the spacetime manifold. 
-This makes the process of defining the factorization algebra, which is really a local object, a tricky one. 
-
-%\subsection{Koszul duality}
-%
-%\def\Mod{\mathsf{Mod}}
-%\def\RRHom{\RR{\rm Hom}}
-%\def\Ext{{\rm Ext}}
-%
-%Koszul duality is an algebraic phenomena that occurs in the context of augmentated algebras.
-%Let $A$ be an associative dg algebra. 
-%An augmentation of a $\CC$-algebra $A$ is a homomorphism of algebras $\epsilon : A \to \CC$. 
-%This augmentation equips $\CC$ with the structure of an $A$-module that we denote $\CC_{\epsilon}$. 
-%
-%Categorically, Koszul duality asserts an equivalence between certain categories of modules.
-%Since $A$ is a dg algebra, its category of dg modules $\Mod_A$ has the structure of a dg category. 
-%This means, given dg modules $M,N$ there is a cochain complex of homomorphisms from $M$ to $N$ that we denote by 
-%\ben
-%\RRHom_A (M, N) .
-%\een
-%%The cohomology of this complex is denoted $\Ext_A(M,N)$. 
-%
-%Since an augmentation makes $\CC = \CC_\epsilon$ into an $A$-module, we can consider the cochain complex
-%\ben
-%A^{!} = \RRHom_A(\CC_{\epsilon}, \CC_{\epsilon})
-%\een
-%Since the (derived) endomorphisms of any module have the structure of a dg algebra, the cochain complex $A^{!}$ also has the structure of a dg algebra. 
-%This dg algebra is called the {\em Koszul dual} of $A$. 
-%
-%\begin{eg} Let $(V, \d)$ be any cochain complex and consider the {\em commutative} dg algebra $\Sym^*(V) = \oplus_{n \geq 0} \Sym^n(V)$.
-%Then, $\Sym^*(V)$ has a natural augmentation $\Sym^*(V) \to \Sym^0(V) = \CC$.  
-%The Koszul dual of $\Sym^*(V)$ with respect to this augmentation is equal to the exterior algebra
-%\ben
-%\Sym^*(V^\vee[-1]) 
-%\een
-%where $V^\vee [-1]$ is the dual vector space placed in cohomological degree $+1$. 
-%Note that if we forget the grading, this dg algebra is the usual exterior algebra $\wedge^* V^\vee$. 
-%
-%As a deformation of this example, one can show that for any dg Lie algebra $\fg$, the Koszul dual of the universal enveloping algebra $U(\fg)$ is the dg commutative algebra of Chevalley-Eilenberg cochains $\clie^*(\fg)$. 
-%\end{eg}
-%
-%The formal statement of Koszul duality asserts an equivalence of categories between some subcategory of dg $A$-modules and some subcategory of dg $A^{!}$-modules.
-%
-%What is the relationship between this algebraic manipulation of Koszul duality and gauge theory? 
-%Consider a theory defined on a manifold of the form
-%\ben
-%\RR_t \times \RR^n .
-%\een
-%Assume, further, that the theory is topological in the $\RR_t$ direction. 
-%Equivalently, the factorization algebra restricted to $\RR_t \times \{x\}$ is locally constant for all $x \in \RR^n$.
-%Let $\sA$ be the factorization algebra on $\RR_t$ restricted to $\RR_t \times \{0\}$. 
-%Then, by local constancy, we know that $\sA$ is equivalent to an $\sE_1$, or dg associative, algebra. 
-%Suppose, in addition 
-%
-%We study the problem of coupling a ``line operator" placed at $\RR_t \times \{0\}$ to the theory on $\RR_t \times \RR^n$. 
-%Factorization along the line gives such an operator the structure of an associative algebra $\sB$. 
-%It turns out, that such a coupling is equivalent to a Maurer-Cartan element in the dg algebra 
-%\ben
-%\sA \tensor \sB .
-%\een 
-%
-%\begin{prop}[Lurie] Suppose $\sA$ is augmented. 
-%Then, Maurer-Cartan elements $\alpha$ in the dg algebra $\sA \tensor \sB$ such that $\epsilon(\alpha) = 0$ are equivalent to maps of algebras
-%\ben
-%\alpha : \sA^! \to \sB .
-%\een
-%\end{prop}
-
+Again, there is the problem of actually identifying the algebraic structure present in the deformation $C_\hbar^*(\fg[z])$. 
+This is the main objective of the course.
 
 \section{The plan for the course}
 

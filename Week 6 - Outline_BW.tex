@@ -1,0 +1,508 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{macros}
+
+%Formatting
+\linespread{1.25}
+
+\usepackage{parskip}
+\setlength{\parindent}{18pt}
+\setlength{\parindent}{0cm}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\title{Quantum $4d$ gauge theory and an outline of the proof}
+
+\author{Brian R. Williams}
+\date{} 
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+
+\begin{document}
+\maketitle
+ 
+
+\section{Existence (and uniqueness) of the quantum gauge theory}
+
+We now turn to proving the existence and uniqueness of the quantization of the $4$-dimensional gauge theory. 
+The result will hold for the ``generalized" Yangian theory on any complex surface $X$.
+Part of the data of this generalized theory is a reducible divisor $D$ and a closed one-form. 
+We recall the precise definition below. 
+
+In this section we prove two results.
+
+\begin{thm}\label{thm: bv quantization}
+Let $X$ be a complex surface equipped with a holomorphic volume form. 
+\begin{enumerate}
+\item Holomorphic BF theory admits a unique quantization, compatible with certain symmetries we state below. 
+\item If, in addition, we fix a reducible divisor $D$ and closed holomorphic one-form, the associated generalized Yangian theory admits a unique quantization, compatible with certain symmetries. 
+\end{enumerate}
+\end{thm}
+
+We will prove existence and uniqueness by a direct cohomological calculation of the deformation complex. 
+As we have seen, the Yangian theory is a deformation of holomorphic BF theory.
+First we will prove (1), then study how the deformation affects our answer. 
+
+Suppose $\sL$ is any local Lie algebra on $X$. 
+Then, the {\em local deformation complex} is, by definition
+\beqn\label{def}
+{\rm Def}_{\sL} = \Omega^{top}_X \tensor_{D_X} \hbar \cred^*(J \sL) [[\hbar]] .
+\eeqn
+The idea for the proof of each of these claims is to consider the dg $D_X$-module $\cred^*(J \sL)$. 
+We will show, if we look at invariants for certain natural symmetries, that this $D_X$-module is homotopically trivial in the degrees controlling obstructions and deformations. 
+Thus, existence and uniqueness will follow. 
+
+\subsubsection{}
+
+Holomorphic BF theory makes sense for any bundle of Lie algebras. 
+It is simply the cotangent theory to the moduli of holomorphic connections valued in the Lie algebra.
+For $P$ a principal $G$-bundle, we can consider the adjoint bundle ${\rm ad}(P)$.
+If, in addition, $D$ is a reduced divisor, we can consider the sheaf of Lie algebras ${\rm ad}(P)(-D) = {\rm ad}(P) \tensor \sO(-D)$. 
+We study holomorphic BF theory with values in this sheaf of Lie algebras.
+Let $\epsilon$ is an odd variable of degree $+1$. 
+The local Lie algebra underlying this theory is
+\[
+\sL_{P,D} = \Omega^{0,*}(X , \fg_P(-D)) [\epsilon],
+\]
+equipped with the $\dbar$ operator and obvious Lie bracket. 
+
+If we write the fields as $\alpha + \epsilon \beta$, the action functional is of the form
+\[
+\int_X \omega \wedge \left(\beta \wedge \dbar \alpha + \frac{1}{2} \beta \wedge [\alpha,\alpha]\right) ,
+\] 
+where $\omega$ is the holomorphic volume form. 
+
+The first symmetry we consider is obtained by the operator $\frac{\partial}{\partial \epsilon}$. 
+Of course, this operator commutes with $\dbar$. 
+Moreover, the operator preserves the Lie bracket as well:
+\[
+\frac{\partial}{\partial \epsilon} [\alpha + \epsilon \beta, \alpha' + \epsilon \beta'] = \frac{\partial}{\partial \epsilon} \left(\epsilon [\alpha, \beta'] + \epsilon[\beta, \alpha']\right) = [\frac{\partial}{\partial \epsilon} (\alpha + \epsilon \beta), \alpha' + \epsilon \beta'] \pm [\alpha + \epsilon \beta, \frac{\partial}{\partial \epsilon} (\alpha' + \epsilon \beta')] .
+\]
+Thus, the one-dimensional abelian Lie algebra $\CC \cdot \frac{\partial}{\partial \epsilon}$ acts on $\sL_{P,D}$. 
+
+There is also the action of the group, $\CC^\times$, that we'd like to take into account. 
+We assign...
+
+Suppose now that $\fh$ is {\em any} other Lie algebra acting on $\sL_{P,D}$. 
+We assume that $\fh$ has the form $\fh = \fh_0 [\epsilon]$, so that $\CC \cdot \frac{\partial}{\partial \epsilon}$ acts on $\fh$. 
+We look at deformations that are invariant with respect to the semi-direct product
+\[
+\CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh = \CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh_0 [\epsilon] ,
+\]
+with the additional property that the deformations are $\CC^\times$-equivariant. 
+
+\begin{rmk}
+Really, we are taking the {\em derived} invariants.
+Recall, if $M$ is a $\fk$-module, then the derived invariants are given by the Chevalley-Eilenberg cochains $\clie^*(\fk, M)$. 
+\end{rmk}
+
+According to Equation \ref{def}, such deformations are equal to the $\CC^\times_{\rm cot}$ invariants of
+\beqn\label{def bf}
+{\rm Def}_{\sL} = \Omega^{top}_X \tensor_{D_X} \clie^*\left(\CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh, \cred^*(J \sL) \right) .
+\eeqn
+
+\begin{lem}
+The $\CC^\times_{\rm cot}$ invariants of the cohomology of (\ref{def bf}) vanishes in every degree. 
+\end{lem}
+\begin{proof}
+Introduce the $D_X$-module
+\[
+M = \clie^*\left(\CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh, \cred^*(J \sL) \right). 
+\]
+It suffices to show that the $\CC^{\times}_{\rm cot}$-invariants of the cohomology $D_X$-module of $M \tensor \hbar \CC[[\hbar]]$ vanish. 
+
+Notice that $\sL$ is just the Dolbeault resolution of the holomorphic vector bundle ${\rm ad}(P)(-D)$. 
+Thus
+\[
+J \sL \simeq J\left({\rm holomorphic\;sections\;of\;}\fg_P(-D)\right) .
+\]
+
+It follows that the stalk of $M$ at a point $x$ away from the divisor is quasi-isomorphic to
+\[
+M_x \simeq \clie^*\left(\CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh, \cred^*(\fg[[z_1,z_2]][\epsilon]) \right) .
+\]
+Similarly, near the divisor the stalks look like
+\[
+M_x \simeq \clie^*\left(\CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh, \cred^*(f\fg[[z_1,z_2]][\epsilon]) \right)
+\]
+where $f$ generates the ideal $\sO(-D)$. 
+
+Since $\fh = \fh_0[\epsilon]$, note that in each case, we can write these stalks in the form
+\beqn\label{def1}
+ \clie^*\left(\CC \cdot \frac{\partial}{\partial \epsilon}, \clie^*(\fh_0, \cred^*(\fa [\epsilon])) \right) ,
+\eeqn
+for some Lie algebra $\fa$ on which $\fh_0$ acts. 
+
+Note that $\hbar$ has $\CC^\times_{\rm cot}$ weight equal to $+1$. 
+Since we really want the $\CC^\times_{\rm cot}$-invariants of $M \tensor \hbar \CC[[\hbar]]$, we only need to consider positive $\CC^\times_{\rm cot}$-weight spaces of (\ref{def1}). 
+
+\begin{lem}
+The cohomology of the positive weight spaces of (\ref{def1}) vanishes in every degree. 
+\end{lem} 
+
+Thus, we have concluded that each stalk is homotopy contractible, thus the $D_X$-module $M$ is also contractible and the result follows. 
+\end{proof}
+
+As a corollary of the calculations of this section, combined with the main result of Costello-Gwilliam in \cite{CG2}, we obtain the following:
+
+\begin{thm}\label{thm: qfact}
+Let $X$ be a complex surface equipped with a holomorphic volume form.
+Then:
+\begin{enumerate}
+\item[(i)]
+there is a factorization algebra $\Obs^{q}_{BF}$ on $X$ defined over $\CC[[\hbar]]$ such that
+\[
+\Obs^q_{BF} / \hbar \simeq \Obs^{cl}_{BF},
+\] 
+where $\Obs^{cl}_{BF}$ are the classical observables of holomorphic BF theory on $X$. ;
+\item[(ii)] 
+there is a factorization algebra $\Obs_{P,D}^q$
+\end{enumerate}
+\end{thm}
+
+\section{From factorization algebras to Hopf algebras}
+
+We now move towards proving one of the main results of this seminar: the Yangian quantum group is encoded in the factorization algebra associated to the quantization of the $4$-dimensional gauge theory. 
+We make this statement precise in Theorem \cite{}. 
+
+The main idea is to consider the $4$-dimensional theory on the manifold $\CC_z \times \RR^2_w$. 
+For each point $z_0 \in \CC_z$ we consider the restriction of the resulting factorization algebra of quantum observables to $\{z_0\} \times \RR^2$. 
+This factorization algebra is {\em locally constant} and hence corresponds, under Lurie's theorem, to an $E_2$-algebra. 
+We will show that the Koszul dual of this algebra is equivalent to the Yangian, as {\em Hopf algebras}. 
+
+\subsection{The quantum $E_2$ algebra}
+
+First, we recall the {\em classical observables} of the $4$-dimensional theory on $\CC_z \times \RR^2$. 
+It is easiest to write down once we fix a complex structure on $\RR^2 \cong \CC_w$. 
+The elliptic complex defining the classical theory is
+\[
+\sL = \Omega^{0,*}(\CC^2 , \fg) \xto{\frac{\partial}{\partial w}} \Omega^{0,*}(\CC^2, \fg)[-1] .
+\] 
+The Lie bracket for $\fg$ gives $\sL$ the structure of a local dg Lie algebra on $X$. 
+Moreover, the pairing
+\[
+\int \<\alpha, \beta\>_\fg \d z \d w
+\]
+equips $\sL$ is non-degenerate and degree $(-3)$. 
+Hence, $\sL$ defines a classical theory in the BV formalism. 
+This is precisely the ``classical Yangian theory" on $\CC_z \times \RR^2_w$ we've introduced in previous weeks. 
+
+The classical observables $\Obs^{cl}_{4d}$ is the precosheaf on $\CC^2$:
+\[
+\Obs^{cl}_{4d} : U \subset \CC^2 \mapsto \clie^*(\sL(U)) = \left(\Sym \left(\sL(U)^\vee[-1]\right), \d_{CE}\right) 
+\]
+where $U$ is any open set. 
+As always, by $\sL(U)^\vee$ we mean the topoloigical dual, and all tensor products are completed. 
+By general principles, from Week 2, we know $\Obs^{cl}_{4d}$ has the structure of a factorization algebra on $\CC^2$. 
+
+By Theorem \ref{thm: qfact}, the general theory of \cite{CG2} produces a factorization algebra $\Obs^{q}_{4d}$ linear over $\CC[[\hbar]]$, whose $\hbar \to 0$ limit is precisely $\Obs^{cl}_{4d}$. 
+In the notation of Theorem \ref{thm: qfact}, here $P$ is the trivial $G$-bundle and $D = 0$. 
+
+\subsubsection{}
+
+We now discuss how to ``restrict" the factorization algebra to the $2$-dimensional submanifold $\{z_0\} \subset \CC_z \times \CC_w$.
+Naively, a factorization algebra is only defined on open subsets, so we must appeal to a refined construction. 
+The idea is to define the factorization algebra associated to a ``formal disk" in the $z$-direction. 
+
+First, note that just like sheaves, factorization algebras pushforward.
+If $f : X \to Y$ is smooth, and $\sF$ is a factorization algebra on $X$ then $f_* \sF$ assigns the open set $V \subset Y$ the complex $\sF(\pi^{-1}(V))$. 
+
+Let $U \subset \CC_z$ be any open subset.
+Of course, it makes sense to restrict $\Obs^{q}_{4d}$ to the open set $U \times \CC_w$. 
+Consider the smooth map $\pi : U \times \CC_w \to \CC_w$. 
+Pushing forward along $\pi$, we obtain a factorization algebra $\pi_*\left(\Obs^q_{4d}|_{U \times \RR^2}\right)$ on $\CC_w$. 
+
+\begin{lem}
+The factorization algebra $\pi_*\left(\Obs^q_{4d}|_{U \times \RR^2}\right)$ on $\CC_w$ is locally constant. 
+\end{lem}
+\begin{proof}
+First, we show that this is true at the classical level. 
+To any open set $V \subset \CC_w$, the pushforward factorization algebra assigns the complex
+\[
+\pi_*\left(\Obs^{cl}_{4d}|_{U \times \RR^2}\right) (V) = \Obs^{cl}_{4d}(U \times V) = \clie^*(\sL(U \times V)) .
+\]
+We must show that if $D \hookrightarrow D'$ is an inclusion of disks in $\CC_w$ that the induced factorization structure map is a quasi-isomorphism. 
+
+For this, it suffices to show that at the level of sheaves of dg Lie algebras. 
+That is, the inclusion $D \hookrightarrow D'$, the induced map $\sL(D') \to \sL(D)$ is a quasi-isomorphism of dg Lie algebas. 
+
+If $D \subset \CC_w$ is any disk, note that there is a quasi-isomorphism 
+\[
+\sO^{hol}(U \times D) \xto{\simeq} \Omega^{0,*}(U \times D) .
+\]
+Thus, we have a quasi-isomorphism of dg Lie algebras 
+\[
+ \left (\sO^{hol}(U \times D) \tensor \fg \xto{\frac{\partial}{\partial w}} \sO^{hol}(U \times D) \tensor \fg [-1] \right) \xto{\simeq} \sL(U \times D) .
+ \]
+The differential $\partial / \partial w$ simply turns on the full de Rham differential, hence by the real Poincar\'{e} lemma for $D$, there is a quasi-isomorphism
+\[
+\sO^{hol}(U) \tensor \fg \xto{\simeq} \sL(U \times D) .
+\]
+These quasi-isomorphisms are compatible with inclusions, hence the classical factorization algebra is locally constant.
+In fact, we have shown something stronger.
+\begin{lem}
+The classical factorization algebra $\pi_*\left(\Obs^{cl}_{4d}|_{U \times \RR^2}\right)$ is equivalent, as an $E_2$-algebra, to the commutative dg algebra
+\[
+\clie^*({\rm Hol}(U)\tensor \fg) .
+\] 
+\end{lem}
+
+Turning to the quantum factorization algebra, note that there is a filtration on $\Obs^q_{4d}$ by powers of $\hbar$. 
+This induces a spectral sequence (of factorization algebras) whose $E_1$ page is equal to $\Obs^{cl}_{4d} \tensor \CC[[\hbar]]$. 
+The same is true for the pushforward factorization algebra. 
+Since the classical factorization algebra is locally constant, it follows that the quantum one is as well. 
+
+\end{proof}
+
+\begin{rmk}
+Instead of fixing an open set in $\CC_z$, this makes sense as we vary $U \subset \CC_z$.
+So, we have shown that $\Obs^{q}_{4d}$ determines a factorization algebra on $\CC_z$ with values in $E_2$-algebras:
+\[
+\Obs^q_{4d} \in {\rm Fact}_{\CC_z}\left({\rm Alg}_{E_2}\right) .
+\]
+Note that the factorization algebra is {\em not} locally constant in the $z$-direction, so this is not equivalent to an $E_4$-algebra.
+\end{rmk}
+
+We take the open set $U \subset \CC_z$ to be a disk $U = D(z_0,r)$. 
+Then, we have just shown that $\pi_*\left(\Obs^{cl}_{4d}|_{U \times \RR^2}\right) \simeq \clie^*(\sO^{hol}(D(z_0,r) \tensor \fg)$. 
+Roughly, we consider a subspace of this factorization algebra induced by the power series expansion $\sO^{hol}(D(z_0,r)) \to \CC[[z-z_0]]$. 
+
+\begin{lem}
+There is an action by the group $S^1$ on $\Obs^{q}_{4d}$ which lifts the action of $S^1$ on $\CC_z \times \CC_w$ by rotations in the $z$-plane.
+\end{lem}
+\begin{proof}
+The action by $S^1$ on $\CC_z \times \CC_w$ induces an action on the Dolbeualt complex and hence on $\sL$ as well. 
+By our calculation of the deformation complex in the proof of Theorem \ref{thm: bv quantization} this action lifts to the quantum theory. 
+\end{proof}
+
+\begin{rmk}
+Note that under this action by $S^1$ the symplectic pairing defining the classical theory has weight $+1$. 
+Thus, the BV Laplacian defining the quantum theory has weight $-1$. 
+This implies that $\hbar$ must have weight $+1$ under this action.
+\end{rmk}
+
+\begin{dfn}
+Let $\pi : D(z_0,r) \times \CC_w \to \CC_w$ be projection.
+Define the sub-factorization algebra on $\CC_w$:
+\[
+\Obs^{q,(k)}_{z_0} \subset \pi_*\left(\Obs^{q}_{4d}|_{D(z_0,r) \times \CC_w}\right)
+\]
+to be the weight $k$-eigenspace for the $S^1$ action. 
+Let
+\[
+\Obs^q_{z_0} := \bigoplus_{k \in \ZZ} \Obs^{q,(k)}. 
+\] 
+\end{dfn}
+
+Similarly, there is a classical version $\Obs^{cl}_{z_0}$ and a map of $E_2$ algebras
+\[
+\Obs^{q}_{z_0} \xto{\hbar \to 0} \Obs^{cl}_{z_0} .
+\]
+Moreover, this map is surjective, so that $\Obs^{q}_{z_0} = \Obs^{cl}_{z_0} [[\hbar]]$ as a graded (no differential) $\CC[[\hbar]]$-module. 
+ 
+Note that $\Obs^{q}_{z_0}$ is a graded $E_2$-algebra (valued in cochain complexes) defined over the graded ring $\CC[[\hbar]]$. 
+There is both the ``$S^1$ grading" and the intrinsic cochain complex grading, when we need to decipher between the two, we refer to the $S^1$ grading as the ``conformal dimension".
+
+As a last check, note that as commutative dg algebras there is a quasi-isomorphism
+\[
+\Obs^{cl}_{z_0} \simeq \clie^*(\fg[[z-z_0]]) .
+\] 
+
+\subsection{Augmentation}
+
+The crux of the seminar is that the observables of the $4d$ gauge theory are {\em Koszul dual} to the Yangian. 
+Koszul duality makes sense in a wide variety of contexts, but one underlying theme persists: duality is defined for augmented algebras. 
+Thus, in order to begin studying Koszul duality for the quantum factorization algebra, we must first produce an augmentation. 
+This is the one point in the argument where we will utitlize the formulation of the generalized Yangian theory on manifolds other than $X = \CC^2 = \CC \times \RR^2$. 
+
+By Theorem \cite{thm: bv quantization} we can define the quantum theory (in a unique way!) on any complex surface $X$ equipped with a holomorphic volume form, principal bundle, and reduced divisor. 
+We consider the theory defined on
+\[
+X = \PP^1_z \times \CC_w
+\]
+where the volume form is $\d z \d w$ and the divisor is $\infty \times \CC_w$. 
+Thus, through quantization, we get a factorization algebra $\Obs^{q}_{\PP^1 \times \CC_w}$ on $\PP^1 \times \CC_w$. 
+
+We take the projection $\pi_{\PP^1} : \PP^1 \times \CC_w \to \CC_w$ and the resulting pushforward factorization algebra $\Obs^q_{\PP^1} := \pi_{\PP^1 *} \Obs^q_{\PP^1 \times \CC_w}$ on $\CC_w$. 
+Similar methods as the previous section show that $\Obs^q_{\PP^1}$ is locally constant, hence defines and $E_2$ algebra. 
+
+\begin{lem}
+There is a quasi-isomorphism of $E_2$ algebras $\Obs^q_{\PP^1} \simeq \CC[[\hbar]]$. 
+\end{lem}
+\begin{proof}
+Again, we first work classically. 
+Note for any disk $D \subset \CC_w$ that
+\[
+\Obs^q_{\PP^1}(D) = \clie\left(\Omega^{0,*}(\PP^1, \sO(-\infty)) \tensor \Omega^*(D)\right) .
+\]  
+Since $H^*(\PP^1 , \sO(-\infty)) = 0$, the result follows. 
+The usual spectral sequence argument completes the proof of the lemma. 
+\end{proof}
+
+Now, consider the diagram
+\[
+\begin{tikzcd}
+\CC_{z} \times \CC_w \ar[dr, "\pi"'] \ar[rr,hook] & & \PP^1 \times \CC_w \ar[dl, "\pi_{\PP^1}"] \\
+& \CC_w &
+\end{tikzcd} 
+\]
+where we embed $\CC \hookrightarrow \PP^1$ away from $\infty$. 
+
+It is immediate from our definitions that the generalized Yangian theory on $\PP^1 \times \CC_w$ restricts to the ordinary Yangian theory on $\CC_z \times \CC_w$.
+Thus, we obtain a map of factorization algebras
+\[
+\Obs^{q}_{4d} \to \Obs^{q}_{\PP^1 \times \RR^2} .
+\]
+
+In particular, we obtain a sequence of $E_2$ algebras (= locally constant factorization algebras on $\CC_w$):
+\[
+\Obs_{z_0}^q \hookrightarrow \pi_*\left(\Obs^{q}_{4d}|_{D(z_0,r) \times \CC_w}\right) \to \Obs^q_{\PP_1} \simeq \CC[[\hbar]] .
+\] 
+The first map is just the inclusion of the $S^1$-eigenspaces. 
+The second map follows from functoriality of pushforward.
+The composition 
+\beqn\label{aug}
+\epsilon_{\hbar} : \Obs_{z_0}^q \to \CC[[\hbar]]
+\eeqn
+is the desired augmentation.
+
+Summarizing:
+
+\begin{cor}
+BV quantization produces a map of $E_2$-algebras $\epsilon_{\hbar} : \Obs^q_{z_0} \to \CC[[\hbar]]$. 
+Moreover, modulo $\hbar$, this augmentation
+\[
+\epsilon_\hbar \mod \hbar : \Obs^{cl}_{z_0} \simeq \clie^*(\fg[[z-z_0]]) \to \CC
+\]
+agrees with the standard one for Lie algebra cochains. 
+\end{cor}
+
+\subsection{Filtrations}
+
+We will use a version of Koszul duality that is sensitive to a {\em filtration} on an algebra. 
+
+In the case that $A = \Wedge^* V[-1]$, with the filtration by $F^i = \Wedge^{\geq i} V[-1]$, the filtered Koszul dual will still be $\Sym^*(V^\vee)$. 
+In the case that $\fg$ is any dg Lie algebra and $A = \clie^*(\fg)$ with the filtration $F^i A = \Sym^{\geq i} (\fg)$, then $A^! \simeq U(\fg)^\vee$. 
+
+In general, we will apply this filtered Koszul duality to the $E_2$ algebra we have just extracted from the factorization algebra of the $4d$ gauge theory. 
+
+We introduce the filtration $\Obs^q_{z_0}$ that we will use in order to construct the filtered Koszul dual coalgebra. 
+%The filtration is related to the $S^1$ weight grading that we have already discussed. 
+
+%In general, consider an algebra $A$ defined over $\CC[[\hbar]]$. 
+%Moreover, suppose $A = \oplus_{k \in \ZZ} A_k$ is a graded algebra where $\hbar$ has weight $+1$ under the grading. 
+%This means that $\hbar^n A^{k-n} \subset A^{k}$, for instance. 
+%Moreover, $A$...
+
+
+\begin{dfn}
+Recall, for any open $U \subset \RR^2_{w}$ the $S^1$ weight $k$ subspace $\Obs^{q,(k)}_{z_0}(U) \subset \Obs^{q}_{z_0}(U)$ on $\RR^2$. 
+Define, for each $k$, the filtration on $\Obs^{q,(k)}_{z_0}(U)$ via
+\[
+F^j \Obs^{q,(k)}_{z_0} (U) = \oplus_{2m + n \geq j} \Sym^{n} \tensor \CC \cdot \hbar^m .
+\]
+The filtration is constructed so that it is compatible with the quantum differential $\d^\q F^j \subset F^j$.
+\end{dfn}
+
+\begin{rmk} In the definition of the factorization algebra $\Obs^q_{z_0}$, the direct sum $\oplus_k \Obs^{q,(k)}_{z_0}$ must be taken as a filtered coproduct. 
+In this way, $\Obs^{q}_{z_0}$ is a factorization algebra with values in the category of filtered cochain complexes. 
+Thus, $\Obs^{q}_{z_0}$ is an $E_2$ algebra in filtered cochain complexes. 
+\end{rmk}
+
+In particular, the classical limit $\Obs^{cl}_{z_0}$ is also filtered. (The dequantization map is a map of filtered $E_2$-algebras). 
+It is immediate to see that modulo $\hbar$ this induces the usual filtration on $\Obs^{cl}_{z_0} \simeq \clie^*(\fg[[z-z_0]])$. 
+
+\section{Sketch of the main result} 
+
+We assume, for a moment, that the theory of filtered Koszul duality has been set up. 
+We will address this issue in the next lecture. 
+In particular, the filtered augmented $E_2$-algebra $\Obs^q_{z_0}$ admits a Koszul dual. 
+To construct it, we forget the $E_2$-algebra structure to a filtered $E_1$ algebra structure then take the dual $(\Obs^q_{z_0})^{!}$ with respect to the augmentation $\epsilon_{\hbar}$ from Equation \ref{aug}. 
+
+We will show that the remaining product endows $(\Obs^q_{z_0})^{!}$ with the structure of a bialgebra. 
+In fact:
+
+\begin{prop}
+The bialgebra $(\Obs^q_{z_0})^{!}$ is a filtered Hopf algebra. 
+\end{prop}
+
+We will see this from a Tannakian formalism argument and is a general fact about taking the Koszul dual of fitlered $E_2$ algebras that are $E_2$ augmented. 
+
+The first object we wish to compare to is the Yangian, or really, its dual. 
+We will meet the rigorous definition of the Yangian quantum group $Y(\fg)$ soon, but for now we note that it is a topological Hopf algebra defined over $\CC[[\hbar]]$ such that modulo $\hbar$ there is an equivalence
+\[
+Y(\fg) / \hbar \cong U(\fg[[z]]) .
+\] 
+
+Also relevant to us is the {\em dual} Yangian. 
+Being a Hopf algebra over $\CC[[\hbar]]$ we obtain the dual Hopf algebra via
+\[
+Y^*(\fg) := {\rm Hom}_{\CC[[\hbar]]} (\CC[[\hbar]], Y(\fg) .
+\] 
+Since the completed projective tensor product is compatible with topological duals, the Yangian is completely determined by the dual Yangian. 
+
+We can finally state the main theorem. 
+
+\begin{thm}
+Let $\fg$ be a simple Lie algebra. 
+Then, there is an isomorphism of $S^1$-equivariant topological Hopf algebras
+\[
+Y^*(\fg) \cong H^*(\Obs^q_{z_0})^{!} .
+\] 
+\end{thm}
+
+The steps are as follows:
+\begin{enumerate}
+\item Verify, modulo $\hbar$, that there is an isomorphism of Hopf algebras
+\[
+H^*(\Obs^q_{0})^{!} \cong U(\fg[[z]])^\vee .
+\] 
+
+\item Modulo $\hbar^2$ the BV quantization agrees with the modulo $\hbar^2$ behavior of the Yangian. 
+
+\end{enumerate}
+
+Actually, (1) is easy. 
+We've already seen that there is a filtered quasi-isomorphism of $E_2$ algebras
+\[
+\Obs_{0}^{q} / \hbar = \Obs^{cl}_{0} \simeq \clie^*(\fg[[z]]) .
+\] 
+Consequently, we can read off the filtered Koszul dual as
+\[
+H^*(\Obs^q_{z_0})^{!} \cong U(\fg[[z]])^\vee
+\]
+as desired. 
+The thing to check is that this is an isomorphism of Hopf algebras, which will be the content of next weeks lectures. 
+
+Step (2) is where we finally get our hands dirty and use the quantization machinery developed in the previous lectures. 
+To state (2) more precisely, introduce the linear dual of the Koszul dual to the observables
+\[
+Y_{QFT}(\fg) = \left(\Obs^q_{z_0})^{!}\right)^\vee .
+\] 
+This is a Hopf algebra over $\CC[[\hbar]]$ such that modulo $\hbar$ 
+\[
+Y_{QFT} (\fg) / \hbar \simeq U(\fg[[z]])
+\]
+as Hopf algebas. 
+Thus, it is the same as the Yangian $Y\fg$ modulo $\hbar$. 
+
+The coalgebra structure on $Y_{QFT}(\fg)$ is of the form
+\[
+\Delta_{QFT} = \Delta^0 + \hbar \Delta_{QFT}^1 + \cdots  .
+\]
+Modulo $\hbar$, of course, $\delta_0$ determines a cocommutative coalgebra. 
+Modulo $\hbar^2$, there is an $\hbar$ dependent {\em cobracket}
+\[
+\delta_{QFT}^1 : \fg[[z]] \to \fg[[z]] \tensor \fg[[z]] .
+\]
+We will show, that up to some scaling constant, that $\delta_{QFT}^1$ is that of Equation (\ref{LieBi}). 
+By Drinfeld's result, this is enough to completely determine the Hopf algebra structure on $Y'(\fg)$. 
+
+%\input{first section}
+
+\bibliographystyle{alpha}
+%\bibliographystyle{spmpsci}  
+\bibliography{syllabus}
+
+\end{document}

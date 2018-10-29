@@ -1,0 +1,70 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{macros}
+
+%Formatting
+\linespread{1.25}
+
+\usepackage{parskip}
+\setlength{\parindent}{18pt}
+\setlength{\parindent}{0cm}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\title{A remark on Beilinson-Drinfeld algebras}
+
+\author{Brian R. Williams}
+\date{} 
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+
+\begin{document}
+\maketitle
+
+%\section{A remark on ``Beilinson-Drinfeld" algebras}
+
+Throughout these notes, $\hbar$ is a formal parameter. 
+\begin{dfn} 
+A {\em Beilinson-Drinfeld} (BD) algebra is:
+\begin{enumerate}
+\item[(i)] a dg commutative algebra $(A,\Delta_{BD})$ (here, $\Delta_{BD}$ is the differential) defined over the ring $\CC[[\hbar]]$;
+\item[(ii)] together with a Poisson bracket $\{-,-\} : A \tensor_{\CC[[\hbar]]} A \to A$ of degree $+1$;
+\end{enumerate}
+such that $\Delta$ is a derivation for the Poisson bracket and
+\beqn\label{BD}
+\Delta_{BD}(a \cdot b) = (\Delta_{BD} a) \cdot b + (-1)^{|a|} a \cdot (\Delta_{BD} b) + \hbar (-1)^{|a|} \{a,b\}
+\eeqn
+for all $a,b \in A$. 
+\end{dfn}
+
+A BD algebra is an algebra over a $\CC[[\hbar]]$-linear operad that we call the {\em BD operad}. 
+We think about this operad as living over the formal scheme ${\rm Spf}(\CC[[\hbar]])$. 
+Over $0$, the operad is precisely the $P_0$-operad. That is, if $A$ is a BD algebra, the commutative dg algebra
+\[
+A^{\cl} = A \tensor_{\CC[[\hbar]]} \CC_{\hbar = 0}
+\]
+inherits the bracket $\{-,-\}$.
+Moreover, the last term in (\ref{BD}) goes away, so that the differential is now a derivation for the product as well. 
+Thus $A^{\cl}$ has the structure of a $P_0$-algebra.
+ 
+Generically, away from $0$, the BD operad naively looks very close to the Batalin-Vilkovisky (BV) operad. 
+Recall, the BV operad is equivalent to the homology of the {\em framed} little $2$-disks operad.
+Thus, a dg algebra over the BV operad consists of: (1) a differential $\d$ of degree $+1$, (2) a commutative product of degree zero, (3) a Poisson bracket $\{-,-\}$ of degree $(-1)$, and (4) an operator $\Delta_{BV}$ of degree $-1$. 
+The BV operator satisfies the formula
+\[
+\Delta_{BV}(a \cdot b) = (\Delta_{BV} a) \cdot b + (-1)^{|a|} a \cdot (\Delta_{BV} b) + (-1)^{|a|} \{a,b\} .
+\]
+
+Besides degree issues, there are important differences between BD algebras and BV algebras. 
+On one hand, the operator $\Delta_{BD}$ in the definition of a BD algebra is the {\em differential}, whereas $\Delta_{BD}$ comes from the unary operation in the BV operad. 
+In particular, when $\hbar$ is generic, the equation (\ref{BD}) implies that the bracket is actually homotopically trivialized by $\hbar^{-1} \Delta_{BD}$. 
+Thus, when we specialize a BD algebra to a generic value of $\hbar$ we just obtain a pointed cochain complex.
+
+\begin{lem}
+The BD operad is an operad over the formal scheme ${\rm Spf}(\CC[[\hbar]])$. 
+Over $0$ it is equivalent to the $P_0$ operad. 
+Away from $0$ it is equivalent to the $E_0$-operad. 
+\end{lem}
+
+\end{document}
