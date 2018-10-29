@@ -22,6 +22,67 @@
 \begin{document}
 \maketitle
  
+\section{An overview of BV quantization}
+
+Let $(\sE, Q, \omega)$ prescribe the data of a classical free BV theory. 
+That is, $\sE$ is the sheaf of sections of a $\ZZ$-graded vector bundle, $Q : \sE \to \sE[1]$ is a differential operator such that $Q^2 = 0$, and $\omega$ is a nondegenerate pairing on $\sE$ arising from a linear map of bundles. 
+We require that $Q$ be graded skew adjoint with respect to $\omega$. 
+
+In addition, we fix an operator $Q^{GF} : \sE \to \sE[-1]$ called the {\em gauge fixing} operator which satisfies $(Q^{GF})^2 = 0$.
+Moreover, we require that the operator (of degree zero) $[Q,Q^{GF}]$ be a generalized Laplacian. 
+
+To this data, for any $L > 0$ one can define the cutoff heat kernel 
+\[
+K_L \in \sE \tensor \sE
+\]
+which is an integral kernel for the operator $e^{-L[Q,Q^{GF}]}$. 
+Similarly, the propagator is defined by $P_{L < L'} = \int_{t=L}^{L'} Q^{GF} K_t \d t$. 
+Let $\Delta_L$ be contraction with $K_L$. 
+
+With a propagator and a functional $I \in \sO(\sE)$ in hand, one can construct the ``graph expansion" $W(P_{L < L'}, I)$.
+This is a sum over labeled stable graphs of corresponding weights. 
+The weight can be though of as a mathematical appearance of a Feynman diagram. 
+
+\begin{dfn}
+A {\em quantum field theory} is a quadruple $(\sE, Q, \omega, \{I[L]\})$ where $\{I[L]\}$ is a collection of functionals in $\sO(\sE)[[\hbar]]$ satisfying the following properties:
+\begin{enumerate}
+\item The functionals satisfy homotopy renormalization group flow: $I [L'] = W(P_{L<L'} , I[L])$. 
+\item For each $L$, $I[L]$ satisfies the scale $L$ quantum master equation (QME)
+\[
+Q I[L] + \hbar \Delta_L I[L] + \frac{1}{2} \{I[L], I[L]\}_L = 0 .
+\]
+\item Modulo $\hbar$, the functional $I[L]$ is at least cubic, for each $L$. 
+Moreover, the collection $\{I[L]\}$ are ``local enough" to ensure that $\lim_{\hbar \to 0, L \to 0} I[L]$ exists and is a local functional in $\sO_{loc}(\sE)$. 
+\end{enumerate}
+\end{dfn}
+
+\begin{rmk}
+Recall, the local functionals $\sO_{loc}(\sE)$ are those functionals that can be written as a the integral of some polydifferential operators applied to the sections of $\sE$. 
+\end{rmk}
+
+In practice, we start with a classical theory described by $I \in \sO_{loc}(\sE)$, and attempt to find a quantum field theory that quantizes it, in the sense that it agrees with the classical theory modulo $\hbar$. 
+As is ordinary in deformation theory, we construct this quantization order by order in the formal parameter $\hbar$. 
+
+We can always find a family of functionals that solves (1), the RG equation, and agrees modulo $\hbar$ with the classical theory we start with. 
+Sometimes, as we saw, this involves counterterms, but the issue of renormalization {\em does not} have any obstructions. 
+On the other hand, solutions to the QME may not always exist, and even if they do, they may not be unique. 
+
+\begin{thm}[\cite{CosRenorm}] 
+Suppose $(\sE, Q, \omega, I)$ is a classical theory, so that $I$ satisfies the CME $Q I + \frac{1}{2} \{I,I\}= 0$. 
+Also, suppose we have constructed a quantization $\{I^{\leq k}[L]\}$ defined modulo $\hbar^{k+1}$. 
+Then, there is an obstruction $\Theta^{k+1}$ to lifting $\{\Tilde{I}^{\leq k}[L]\}$ to a QFT defined modulo $\hbar^{k+2}$.
+The element $\Theta^{k+1}$ is a degree $+1$ cocycle of the {\em deformation} complex
+\[
+{\rm Def}_{\sE} = \left(\sO_{loc}(\sE), Q + \{I,-\}\right) .
+\]
+Moreover, if the cohomology class $[\Theta^{k+1}]$ is trivial, then the set of quantizations defined modulo $\hbar^{k+2}$ that agree with $\{I^{\leq k}[L]\}$ modulo $\hbar^{k+1}$ is a torsor for the abelian group $H^0({\rm Def}_{\sE})$. 
+\end{thm}
+
+In the example of the Yangian, we will see that the deformation complex of the $4$-dimensional gauge theory is nicely controlled once we restrict ourselves to quantizations that respect certain intrinsic symmetries. 
+This will imply the existence and uniqueness of QFT's quantizing the classical gauge theory.
+
+The explicit form of the quantization will enter in when we compute (to first order) the factorization product.
+This will be done in the upcoming lectures.
 
 \section{Existence (and uniqueness) of the quantum gauge theory}
 
@@ -57,19 +118,21 @@ Thus, existence and uniqueness will follow.
 
 Holomorphic BF theory makes sense for any bundle of Lie algebras. 
 It is simply the cotangent theory to the moduli of holomorphic connections valued in the Lie algebra.
-For $P$ a principal $G$-bundle, we can consider the adjoint bundle ${\rm ad}(P)$.
+
+We have seen a slight variant suitable for our purposes. 
+For $P$ a principal $G$-bundle, let ${\rm ad}(P)$ be its adjoint bundle.
+Its fibers are identified with the Lie algebra $\fg$. 
 If, in addition, $D$ is a reduced divisor, we can consider the sheaf of Lie algebras ${\rm ad}(P)(-D) = {\rm ad}(P) \tensor \sO(-D)$. 
-We study holomorphic BF theory with values in this sheaf of Lie algebras.
-Let $\epsilon$ is an odd variable of degree $+1$. 
-The local Lie algebra underlying this theory is
+Then, we look at holomorphic BF theory with values in this sheaf of Lie algebras.
+For $\epsilon$ an odd variable of degree $+1$, the local Lie algebra underlying this theory can be written as
 \[
-\sL_{P,D} = \Omega^{0,*}(X , \fg_P(-D)) [\epsilon],
+\sL_{P,D} = \Omega^{0,*}(X , \fg_P(-D)) [\epsilon] .
 \]
-equipped with the $\dbar$ operator and obvious Lie bracket. 
+It is equipped with the $\dbar$ operator as its differential, and Lie bracket is the obvious one.
 
 If we write the fields as $\alpha + \epsilon \beta$, the action functional is of the form
 \[
-\int_X \omega \wedge \left(\beta \wedge \dbar \alpha + \frac{1}{2} \beta \wedge [\alpha,\alpha]\right) ,
+S_{BF} (\alpha + \epsilon \beta) = \int_X \omega \wedge \left(\beta \wedge \dbar \alpha + \frac{1}{2} \beta \wedge [\alpha,\alpha]\right) ,
 \] 
 where $\omega$ is the holomorphic volume form. 
 
@@ -81,8 +144,10 @@ Moreover, the operator preserves the Lie bracket as well:
 \]
 Thus, the one-dimensional abelian Lie algebra $\CC \cdot \frac{\partial}{\partial \epsilon}$ acts on $\sL_{P,D}$. 
 
-There is also the action of the group, $\CC^\times$, that we'd like to take into account. 
-We assign...
+There is also the action of the group $\CC^\times$ that we'd like to take into account.
+It is fixed by assigning the formal parameter weight $+1$ and everything else weight zero. 
+This type of symmetry is used in ``cotangent quantizations" of classical theories, and we refer the reader to Chapter 10 of \cite{CG2} or for some more examples \cite{wg2, GGW, GG1}.
+For this reason, we will refer to the group as $\CC^{\times}_{\rm cot}$.  
 
 Suppose now that $\fh$ is {\em any} other Lie algebra acting on $\sL_{P,D}$. 
 We assume that $\fh$ has the form $\fh = \fh_0 [\epsilon]$, so that $\CC \cdot \frac{\partial}{\partial \epsilon}$ acts on $\fh$. 
@@ -90,7 +155,7 @@ We look at deformations that are invariant with respect to the semi-direct produ
 \[
 \CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh = \CC \cdot \frac{\partial}{\partial \epsilon} \ltimes \fh_0 [\epsilon] ,
 \]
-with the additional property that the deformations are $\CC^\times$-equivariant. 
+with the additional property that the deformations are $\CC^\times_{\rm cot}$-equivariant. 
 
 \begin{rmk}
 Really, we are taking the {\em derived} invariants.
@@ -141,7 +206,7 @@ Since we really want the $\CC^\times_{\rm cot}$-invariants of $M \tensor \hbar \
 The cohomology of the positive weight spaces of (\ref{def1}) vanishes in every degree. 
 \end{lem} 
 
-Thus, we have concluded that each stalk is homotopy contractible, thus the $D_X$-module $M$ is also contractible and the result follows. 
+Thus, we have concluded that each stalk is homotopy contractible, so the $D_X$-module $M$ is also contractible and the result follows. 
 \end{proof}
 
 As a corollary of the calculations of this section, combined with the main result of Costello-Gwilliam in \cite{CG2}, we obtain the following:
@@ -164,7 +229,7 @@ there is a factorization algebra $\Obs_{P,D}^q$
 \section{From factorization algebras to Hopf algebras}
 
 We now move towards proving one of the main results of this seminar: the Yangian quantum group is encoded in the factorization algebra associated to the quantization of the $4$-dimensional gauge theory. 
-We make this statement precise in Theorem \cite{}. 
+We make this statement precise in Theorem \ref{thm: yangian}. 
 
 The main idea is to consider the $4$-dimensional theory on the manifold $\CC_z \times \RR^2_w$. 
 For each point $z_0 \in \CC_z$ we consider the restriction of the resulting factorization algebra of quantum observables to $\{z_0\} \times \RR^2$. 
@@ -373,7 +438,7 @@ Summarizing:
 BV quantization produces a map of $E_2$-algebras $\epsilon_{\hbar} : \Obs^q_{z_0} \to \CC[[\hbar]]$. 
 Moreover, modulo $\hbar$, this augmentation
 \[
-\epsilon_\hbar \mod \hbar : \Obs^{cl}_{z_0} \simeq \clie^*(\fg[[z-z_0]]) \to \CC
+\epsilon_\hbar \mod \hbar \;\;\; : \;\;\; \Obs^{cl}_{z_0} \simeq \clie^*(\fg[[z-z_0]]) \to \CC
 \]
 agrees with the standard one for Lie algebra cochains. 
 \end{cor}
@@ -444,7 +509,7 @@ Since the completed projective tensor product is compatible with topological dua
 
 We can finally state the main theorem. 
 
-\begin{thm}
+\begin{thm} \label{thm: yangian}
 Let $\fg$ be a simple Lie algebra. 
 Then, there is an isomorphism of $S^1$-equivariant topological Hopf algebras
 \[
