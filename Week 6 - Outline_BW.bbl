@@ -1,0 +1,40 @@
+\begin{thebibliography}{Cos11}
+
+\bibitem[CG]{CG2}
+Kevin Costello and Owen Gwilliam.
+\newblock Factorization algebras in quantum field theory. {V}ol. 2.
+\newblock available at \url{http://people.mpim-bonn.mpg.de/gwilliam}.
+
+\bibitem[Cosa]{wg2}
+Kevin Costello.
+\newblock A geometric construction of the {W}itten genus, {II}.
+\newblock Available at \url{http://arxiv.org/abs/1112.0816}.
+
+\bibitem[Cosb]{CosYangian}
+Kevin Costello.
+\newblock {S}upersymmetric gauge theory and the {Y}angian.
+\newblock Available at \url{http://arxiv.org/abs/1303.2632}.
+
+\bibitem[Cos11]{CosRenorm}
+Kevin Costello.
+\newblock {\em Renormalization and effective field theory}, volume 170 of {\em
+  Mathematical Surveys and Monographs}.
+\newblock American Mathematical Society, Providence, RI, 2011.
+
+\bibitem[Dri85]{Drinfeld1}
+V.~G. Drinfeld.
+\newblock Hopf algebras and the quantum {Y}ang-{B}axter equation.
+\newblock {\em Dokl. Akad. Nauk SSSR}, 283(5):1060--1064, 1985.
+
+\bibitem[GG14]{GG1}
+Owen Gwilliam and Ryan Grady.
+\newblock One-dimensional {C}hern-{S}imons theory and the {$\hat A$} genus.
+\newblock {\em Algebr. Geom. Topol.}, 14(4):2299--2377, 2014.
+
+\bibitem[GGW]{GGW}
+Owen Gwilliam, Vassily Gorbounov, and Brian Williams.
+\newblock {C}hiral differential operators via {B}atalin-{V}ilkovisky
+  quantization.
+\newblock Available at \url{https://arxiv.org/abs/1610.09657}.
+
+\end{thebibliography}

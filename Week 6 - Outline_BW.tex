@@ -43,7 +43,7 @@ With a propagator and a functional $I \in \sO(\sE)$ in hand, one can construct t
 This is a sum over labeled stable graphs of corresponding weights. 
 The weight can be though of as a mathematical appearance of a Feynman diagram. 
 
-\begin{dfn}
+\begin{dfn}[\cite{CG2}]
 A {\em quantum field theory} is a quadruple $(\sE, Q, \omega, \{I[L]\})$ where $\{I[L]\}$ is a collection of functionals in $\sO(\sE)[[\hbar]]$ satisfying the following properties:
 \begin{enumerate}
 \item The functionals satisfy homotopy renormalization group flow: $I [L'] = W(P_{L<L'} , I[L])$. 
@@ -381,7 +381,7 @@ Koszul duality makes sense in a wide variety of contexts, but one underlying the
 Thus, in order to begin studying Koszul duality for the quantum factorization algebra, we must first produce an augmentation. 
 This is the one point in the argument where we will utitlize the formulation of the generalized Yangian theory on manifolds other than $X = \CC^2 = \CC \times \RR^2$. 
 
-By Theorem \cite{thm: bv quantization} we can define the quantum theory (in a unique way!) on any complex surface $X$ equipped with a holomorphic volume form, principal bundle, and reduced divisor. 
+By Theorem \ref{thm: bv quantization} we can define the quantum theory (in a unique way!) on any complex surface $X$ equipped with a holomorphic volume form, principal bundle, and reduced divisor. 
 We consider the theory defined on
 \[
 X = \PP^1_z \times \CC_w
@@ -509,7 +509,7 @@ Since the completed projective tensor product is compatible with topological dua
 
 We can finally state the main theorem. 
 
-\begin{thm} \label{thm: yangian}
+\begin{thm} [\cite{CosYangian}] \label{thm: yangian}
 Let $\fg$ be a simple Lie algebra. 
 Then, there is an isomorphism of $S^1$-equivariant topological Hopf algebras
 \[
@@ -525,7 +525,8 @@ H^*(\Obs^q_{0})^{!} \cong U(\fg[[z]])^\vee .
 \] 
 
 \item Modulo $\hbar^2$ the BV quantization agrees with the modulo $\hbar^2$ behavior of the Yangian. 
-
+This amounts to comparing the Lie bialgebra structure present in the modulo $\hbar^2$ reduction of the Yangian with a certain Lie bialgebra structure coming from the modulo $\hbar^2$ QFT. 
+By Drinfeld's uniqueness result \cite{Drinfeld1}, this is enough to completely determine the Hopf algebra structure. 
 \end{enumerate}
 
 Actually, (1) is easy. 
@@ -541,28 +542,59 @@ as desired.
 The thing to check is that this is an isomorphism of Hopf algebras, which will be the content of next weeks lectures. 
 
 Step (2) is where we finally get our hands dirty and use the quantization machinery developed in the previous lectures. 
-To state (2) more precisely, introduce the linear dual of the Koszul dual to the observables
-\[
-Y_{QFT}(\fg) = \left(\Obs^q_{z_0})^{!}\right)^\vee .
-\] 
-This is a Hopf algebra over $\CC[[\hbar]]$ such that modulo $\hbar$ 
-\[
-Y_{QFT} (\fg) / \hbar \simeq U(\fg[[z]])
-\]
-as Hopf algebas. 
-Thus, it is the same as the Yangian $Y\fg$ modulo $\hbar$. 
+To do this, we concoct a Lie bialgebra structure present in the QFT that matches up with that in the Yangian. 
 
-The coalgebra structure on $Y_{QFT}(\fg)$ is of the form
+We start with the following associative algebra constructed from the QFT. 
+Consider the $4d$ gauge theory on the manifold $\CC_z \times (\RR^2)^\times \subset \CC_z \times \RR^2$. 
+Identifying $(\RR^2)^\times = S^1 \times \RR$ we can compactify the factorization algebra $\oint_{S^1 \subset \RR^2} \Obs^q_{z_0}$ along $S^1$ to obtain a one-dimensional factorization algebra on $\RR$. 
+This is the so-called ``annular algebra" in the topological $\RR^2$ direction. 
+Since $\Obs^q_{z_0}$ is locally constant, we see that $\oint_{S^1 \subset \RR^2} \Obs^q_{z_0}$ is equivalent to an $E_1$ algebra. 
+
+This $E_1$ algebra determines a certain Poisson algebra structure on the {\em classical} observables.
+Actually, this situation is quite general. 
+Suppose that $A$ is any filtered algebra defined over $\CC[[\hbar]]$ such that $A / \hbar$ is a commutative algebra.
+Then, the algebra structure (modulo $\hbar^2$) defines a Poisson structure on the associated graded ${\rm Gr}(A/\hbar)$. 
+
+In this way, the annular algebra determines a Poisson bracket on 
 \[
-\Delta_{QFT} = \Delta^0 + \hbar \Delta_{QFT}^1 + \cdots  .
-\]
-Modulo $\hbar$, of course, $\delta_0$ determines a cocommutative coalgebra. 
-Modulo $\hbar^2$, there is an $\hbar$ dependent {\em cobracket}
+{\rm Gr} \left(\oint_{S^1 \subset \RR^2} \Obs^{cl}_{z_0}\right) .
+\] 
+Where we really mean the classical observables. 
+In particular, it determines a bracket on $H^0$. 
+
+By general properties of locally constant factorization algebras, this compactification is equivalent, as $E_1$ algebras, to the {\em Hochschild homology} of the $E_2$ algebra ${\rm Gr}(\Obs^{cl}_{z_0})$. 
+Thus, the bracket we've constructed determines a bracket $\{-,-\}_{QFT}$ on
 \[
-\delta_{QFT}^1 : \fg[[z]] \to \fg[[z]] \tensor \fg[[z]] .
-\]
-We will show, that up to some scaling constant, that $\delta_{QFT}^1$ is that of Equation (\ref{LieBi}). 
-By Drinfeld's result, this is enough to completely determine the Hopf algebra structure on $Y'(\fg)$. 
+HH_0({\rm Gr}(\Obs^{cl}_{z_0})) .
+\] 
+
+Finally, by the classical result, we know that this Hoschschild homology is equivalent to $\Sym(\fg[[z]])^\vee$.
+By definition, the dual Yangian {\em also} determines a Poisson bracket on this space $\{-,-\}_{Y^*\fg}$. 
+
+We will perform an explicit calculation of Feynman diagrams to relate $\{-,-\}_{QFT}$ and $\{-,-\}_{Y^*\fg}$. 
+
+%To state (2) more precisely, introduce the linear dual of the Koszul dual to the observables
+%\[
+%Y_{QFT}(\fg) = \left(\Obs^q_{z_0})^{!}\right)^\vee .
+%\] 
+%This is a Hopf algebra over $\CC[[\hbar]]$ such that modulo $\hbar$ 
+%\[
+%Y_{QFT} (\fg) / \hbar \simeq U(\fg[[z]])
+%\]
+%as Hopf algebas. 
+%Thus, it is the same as the Yangian $Y\fg$ modulo $\hbar$. 
+%
+%The coalgebra structure on $Y_{QFT}(\fg)$ is of the form
+%\[
+%\Delta_{QFT} = \Delta^0 + \hbar \Delta_{QFT}^1 + \cdots  .
+%\]
+%Modulo $\hbar$, of course, $\delta_0$ determines a cocommutative coalgebra. 
+%Modulo $\hbar^2$, there is an $\hbar$ dependent {\em cobracket}
+%\[
+%\delta_{QFT}^1 : \fg[[z]] \to \fg[[z]] \tensor \fg[[z]] .
+%\]
+%We will show, that up to some scaling constant, that $\delta_{QFT}^1$ is that of Equation (\ref{LieBi}). 
+%By Drinfeld's result, this is enough to completely determine the Hopf algebra structure on $Y'(\fg)$. 
 
 %\input{first section}
 
