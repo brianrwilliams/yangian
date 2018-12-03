@@ -1,0 +1,226 @@
+\documentclass[11pt]{amsart}
+
+\usepackage{macros}
+
+%Formatting
+\linespread{1.25}
+
+\usepackage{parskip}
+\setlength{\parindent}{18pt}
+\setlength{\parindent}{0cm}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{5}
+
+\def\yscomod{{\rm Comod}_{Y^*(\fg)}}
+\def\yslcomod{{\rm Comod}_{Y^*(\fg)}((\lambda))}
+
+\title{Quantum $4d$ gauge theory and an outline of the proof}
+
+\author{Brian R. Williams}
+\date{} 
+
+\def\brian{\textcolor{blue}{BW: }\textcolor{blue}}
+
+\begin{document}
+\maketitle
+
+\section{A recollection of $R$-matrices}
+
+\subsection{Warmup: braided monoidal categories}
+
+Suppose that $\sC$ is an $\sE_2$, or braided, monoidal category.
+We have seen that we can view an $\sE_2$ category as an $\sE_1$ object in $\sE_1$ monoidal (or just monoidal), categories
+\[
+\sC \in {\rm Alg}_{\sE_2} (\sC{\rm at}) = {\rm Alg}_{\sE_1} \left({\rm Alg}_{\sE_1} (\sC{\rm at}) \right) .
+\]
+Concretely, this means that on $\sC$ we have two {\em compatible} tensor products $\tensor, \boxtimes$.
+Actually, $\tensor, \boxtimes$ are naturally isomorphic
+\begin{align*}
+V \boxtimes W & \cong (V \tensor 1) \boxtimes (1 \tensor W) \\ & \cong (V \boxtimes 1) \tensor (1 \boxtimes W) \\ & \cong V \tensor W .
+\end{align*}
+
+All of the juice, therefore, is in the requirement that $\tensor$ and $\boxtimes$ are compatible. 
+The most efficient way to encode this is to require that the bifunctor
+\[
+\boxtimes : \sC \times \sC \to \sC
+\]
+determined by $\boxtimes$ is {\em monoidal}, where we view $\sC \times \sC, \sC$ as monoidal categories via $\tensor$. 
+Spelling out what this means boils down to requiring that there is a natural isomorphism
+\[
+(V \tensor W) \tensor (V' \tensor W') \cong (V \tensor V') \tensor (W \tensor W')
+\]
+for all objects $V,V',W,W'$.
+Setting $V, W'= 1$, we see that this isomorphism determines an isomorphism $\sigma_{W, V'} : W \tensor V' \to V' \tensor W$.
+The resulting structure $(\sC, \tensor, \sigma_{V,W})$ defines a {\em braided} monoidal category, where $\sigma_{V,W}$ are the braiding morphisms.
+
+Conversely, given a braided monoidal category we can define
+\[
+(V \tensor W) \tensor (V' \tensor W') \cong V \tensor (W \tensor V') \tensor W'  \overset{\sigma_{W, V'}}{\cong} V \tensor (V' \tensor W) \tensor W' \cong (V \tensor V') \tensor (W \tensor W') .
+\]
+In other words, a braided monoidal category determines a monoidal structure on the bifunctor $(V,W) \mapsto V \tensor W$, and vice-versa. 
+
+\subsection{Drinfeld's rational $R$-matrix}
+
+Recall that there is a $\CC^\times$-action on $Y(\fg)$.
+We define $\lambda$ to have $\CC^\times$-weight $1$.
+
+\begin{thm}[\cite{Drin87}] \label{thm: drin1}
+There is a unique element 
+\[
+R(\lambda) \in Y(\fg) \Hat{\tensor}_{\CC[[\hbar]]} Y(\fg) \Hat{\tensor} \CC((\lambda))
+\]
+satisfying:
+\begin{enumerate}
+\item[(1)]\label{invariance} ($\CC^\times$-invariance) $R(\lambda)$ is $\CC^\times$-invariant. 
+\item[(2)]\label{equiv} (Translation equivariance)
+For all $a \in Y(\fg)$ 
+\[
+(T_\lambda \tensor T_0) \sigma \Delta(a) = R(\lambda) ((T_\lambda \tensor T_0) \Delta(a)) R(\lambda)^{-1} \in R(\lambda) \in Y(\fg) \Hat{\tensor}_{\CC[[\hbar]]} Y(\fg) \Hat{\tensor} \CC((\lambda)) .
+\]
+\item[(3)] \label{R3} (??) $(\Delta \tensor 1) R(\lambda) = R_{13}(\lambda) R_{23}(\lambda)$ and $(1 \tensor \Delta) R(\lambda)$. 
+\end{enumerate}
+\end{thm}
+
+\begin{rmk}
+The $R$-matrix $R(\lambda)$ satisfies the Yang-Baxter equation with spectral parameter. 
+This equation follows from the three listed properties in the theorem. 
+\end{rmk}
+
+\def\ymodfin{{\rm Mod}_{Y(g)}^{fin}}
+
+\subsection{Interpreting the spectral $R$-matrix}
+
+Our goal in this section is to interpret the $R$-matrix conditions in Theorem \ref{thm: drin1} in a more categorical way. 
+The running example we should keep in mind from Section \ref{sec: braid} is that to give a braided monoidal structure is equivalent to prescribing monoidality of the tensor product bifunctor. 
+We will see something similar in the case of the $R$-matrix: the data of a rational $R$-matrix is equivalent to the monoidality of a certain functor.
+See Theorem \brian{ref}
+
+For the remainder of this section, the category $\ymodfin$ denotes the category of (non dg) $Y(\fg)$-modules that are free and finite dimensional as $\CC[[\hbar]]$-modules. 
+
+\begin{dfn}
+If $V \in \ymodfin$, define the $Y(\fg)((\lambda))$-module
+\[
+T_\lambda V = V \tensor_{Y(\fg)} Y(\fg)((\lambda)) .
+\]
+In the definition, we use the Hopf algebra homomorphism $T_\lambda : Y(\fg) \to Y(\fg)((\lambda)) = Y(\fg) \Hat{\tensor} \CC((\lambda))$. 
+Similarly, define the $Y(\fg)((\lambda))$-module
+\[
+T_0 V = V \Hat{\tensor} \CC((\lambda)) = V((\lambda))
+\]
+as the induction of $V$ along the embedding of Hopf algebras $T_0 : Y(\fg) \to Y(\fg)((\lambda)) \;, \; a \mapsto a \tensor 1$. 
+\end{dfn}
+
+With this notation in place, we can define the following functor that will be relevant for the remainder of the section. 
+Define
+\begin{equation}\label{functor}
+F_\lambda : \ymodfin \times \ymodfin \to {\rm Mod}_{Y(\fg)}((\lambda))
+\end{equation}
+on objects by $(V, W) \mapsto T_0 V \tensor T_\lambda W$.
+Similarly, we have the functor
+\[
+F'_\lambda : \ymodfin \times \ymodfin \to {\rm Mod}_{Y(\fg)}((\lambda))
+\]
+defined on objects by $(V, W) \mapsto T_\lambda V \tensor T_0 W$.
+
+\begin{con}
+Suppose $S(\lambda) \in Y(\fg) \tensor Y(\fg)((\lambda))$ is any element,
+and fix $V, W \in \ymodfin$. 
+Note that $V \tensor W = V \tensor_{\CC[[\hbar]]} W$ is a module for the Hopf algebra $Y(\fg) \tensor Y(\fg)$. 
+Multiplication by $S(\lambda)$ on $V \tensor W ((\lambda))$ defines an endomorphism
+\[
+S_{V,W} \in {\rm End}_{\CC((\lambda))} (V \tensor W((\lambda))) .
+\]
+Note that for this endomorphism to be well-defined, we needed $V,W$ to be finite rank as $\CC[[\hbar]]$-modules.
+\end{con}
+
+\begin{lem}\label{lem: R1}
+Suppose $S(\lambda) \in Y(\fg) \tensor Y(\fg)((\lambda))$ satisfies condition (3) of Theorem \ref{thm: drin1}. 
+Then, $S(\lambda)$ defines a natural transformation of functors
+\[
+\eta_{S} : F_\lambda \xto{\cong} F'_\lambda \circ \sigma
+\]
+via the formula
+\[
+\eta_S (V,W) = \sigma \circ S_{V,W} : T_0 V \tensor T_\lambda W \to T_\lambda W \tensor T_0 V.
+\]
+\end{lem}
+
+\begin{lem}
+Suppose $S(\lambda) \in Y(\fg) \tensor Y(\fg)((\lambda))$satisfies condition (2) of Theorem \ref{thm: drin1}. 
+Then, for all $V_1,V_2,V_3 \in \ymodfin$ the following diagrams commute 
+%\label{Rd1}
+%\label{Rd2}
+\end{lem}
+
+We need one last technical lemma before proceeding.
+Suppose that $\sC, \sD$ are monoidal categories.
+We view the tensor products $\tensor_{\sC}$, $\tensor_{\sD}$ as bifunctors
+\[
+\tensor_{\sC} : \sC \times \sC \to \sC \;\; , \;\; \tensor_{\sD} : \sD \times \sD \to \sD .
+\]
+
+Suppose that $G : \sC \to \sD$ a functor.
+A natural transformation making $G$ a monoidal functor is the data of a natural transformation of functors $\sC \times \sC \to \sD$
+\[
+\eta : G \circ \tensor_{\sC} \xto{\cong} \tensor_{\sD} \circ (G \times G) .
+\]
+In other words, we have isomorphisms $G(c \tensor_{\sC} c') \cong G(c) \tensor_{\sD} G(c')$ that are natural in $c,c' \in \sC$. 
+
+\begin{lem}
+Let $F_\lambda$ be the functor from Equation (\ref{functor}).
+Then, the data of a natural transformation making $F$ a monoidal functor is equivalent to the data of a natural transformation
+\[
+\eta : F_\lambda \xto{\cong} F'_\lambda \circ \sigma 
+\]
+such that the diagrams (\ref{Rd1}) and (\ref{Rd2}) commute. 
+\end{lem}
+
+We can summarize a consequence of the above lemmas in the following way. 
+
+\begin{thm}
+Drinfeld's $R$-matrix $R(\lambda)$ gives rise to a natural transformation $\eta_R$, as in Lemma \ref{lem: R1}, making the functor
+\[
+F_\lambda : \ymodfin \times \ymodfin \to {\rm Mod}_{Y(\fg)((\lambda))} .
+\]
+monoidal. 
+\end{thm}
+
+\subsection{A variation for comodules}
+
+Define 
+\[
+F^{\rm comod}_{\lambda} : \yscomod \times \yscomod \to \yslcomod 
+\]
+by $(V,W) \mapsto T_{\lambda} V \tensor T_0 W$. 
+ 
+\begin{thm}\label{thm: comodequiv}
+The following pieces of data are equivalent:
+\begin{itemize}
+\item[(1)] An $R$-matrix with spectral parameter
+\[
+R(\lambda) \in F^0(Y(\fg) \tensor Y(\fg))((\lambda))
+\]
+satisfying (1),(2), and (3) of Theorem \ref{thm: drin1}.
+\item[(2)] 
+The data of a natural transformation making $F_\lambda$ a monoidal functor.
+\end{itemize}
+\end{thm}
+
+When such an $R(\lambda)$ is given, we will denote by $F_R$ or $F_{R(\lambda)}$ the associated monoidal functor. 
+
+\section{The OPE}
+
+\subsection{The main result}
+
+
+
+\begin{thm}[\cite{CosYangian1}] 
+There is a natural equivalence of monoidal functors $\yscomod \times \yscomod \to \yslcomod$ 
+\[
+F_{OPE} \cong F_{R(\lambda)}
+\]
+where $F(R(\lambda))$ is the monoidal functor corresponding to Drinfeld's $R$-matrix as in Theorem \ref{thm: comodequiv}.
+\end{thm}  
+
+\end{document}
