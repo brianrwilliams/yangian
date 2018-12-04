@@ -15,7 +15,7 @@
 \def\yscomod{{\rm Comod}_{Y^*(\fg)}}
 \def\yslcomod{{\rm Comod}_{Y^*(\fg)}((\lambda))}
 
-\title{Quantum $4d$ gauge theory and an outline of the proof}
+\title{$R$-matrices from $4$-dimensional factorization algebras}
 
 \author{Brian R. Williams}
 \date{} 
@@ -61,9 +61,53 @@ Conversely, given a braided monoidal category we can define
 In other words, a braided monoidal category determines a monoidal structure on the bifunctor $(V,W) \mapsto V \tensor W$, and vice-versa. 
 
 \subsection{Drinfeld's rational $R$-matrix}
+We have been working with topological algebras / coalgebras, and modules / comodules over them that have an additional topological structure. 
+We arrived at this topological structure through the data of a filtration.
 
-Recall that there is a $\CC^\times$-action on $Y(\fg)$.
+In Week ??, the category of filtered, bounded, free, dg $\CC[[\hbar]]$-modules $\sC^b$ was introduced. 
+%The filtration weight of $\hbar$ is $+1$. 
+An object $V \in \sC^b$ is a cochain complex of the form
+\[
+V_0 \tensor \CC[[\hbar]] 
+\]
+where $V_0$ is a cochain complex equipped with a decreasing filtration $$V = F^0 V \supset F^1 V \supset \cdots$$ and satisfies $V \cong \lim V / F^i V.$
+The category $\sC^b$ is symmetric monoidal.
+The tensor product of two objects $V, W \in \sC^b$ is the completed one, where we take into account the filtrations in the following way
+\[
+V \tensor_{\CC[[\hbar]]} W = \lim_{i,j} \left((V / F^i V) \tensor_{\CC[[\hbar]]} W / F^j W\right)  \in \sC^b .
+\]
+
+Introduce the formal Laurent series ring $\CC((\lambda))$. 
+We will need to consider a Hopf algebra built from $Y(\fg)$ by adjoining the parameter $\lambda$. 
+To do things properly, we need to do this in the following completed way.
+For $V$ an object in $\sC^b$, define the completed tensor product
+\[
+V \Hat{\tensor} \CC((\lambda)) = \lim_i \underset{k}{\rm colim} \lim_j \lambda^{-k} (V / F^i V) [\lambda] / \lambda^j .
+\]
+We will often simply denote this by $V((\lambda))$. 
+
+\begin{rmk}
+This formula for the completed tensor product arises from viewing $\CC((\lambda))$ as an ind-pro object
+\[
+\CC((\lambda)) = \underset{k}{\rm colim} \; \lambda^{-k} \CC[[\lambda]] = \underset{k}{\rm colim} \lim_{j} \lambda^{-k} \CC[\lambda] / \lambda^j .
+\]
+\end{rmk}
+
+\begin{rmk}
+Throughout, we let $\tensor_{alg}$ denote the algebraic tensor product. 
+Note that $Y(\fg)((\lambda))$ and $Y(\fg)\tensor_{alg} \CC((\lambda))$ are {\em different} Hopf algebras, but we have an inclusion of Hopf algebras
+\[
+Y(\fg)\tensor_{alg} \CC((\lambda)) \hookrightarrow Y(\fg)((\lambda)).
+\] 
+\end{rmk}
+
+The category of $Y(\fg)((\lambda))$-modules is defined similarly as in in the plain $Y(\fg)$ case. 
+In particular, we focus on modules that are quasi-free, which means they admit a filtration whose assoociated graded pieces are of the form $V \tensor_{alg} (A((\lambda)))$. 
+
+Recall that $Y(\fg)$ is a topological Hopf algebra over the ring $\CC[[\hbar]]$. 
+Moreover, there is a $\CC^\times$-action on $Y(\fg)$ inducing a grading where $\hbar$ has weight $1$. 
 We define $\lambda$ to have $\CC^\times$-weight $1$.
+
 
 \begin{thm}[\cite{Drin87}] \label{thm: drin1}
 There is a unique element 
@@ -94,7 +138,7 @@ This equation follows from the three listed properties in the theorem.
 Our goal in this section is to interpret the $R$-matrix conditions in Theorem \ref{thm: drin1} in a more categorical way. 
 The running example we should keep in mind from Section \ref{sec: braid} is that to give a braided monoidal structure is equivalent to prescribing monoidality of the tensor product bifunctor. 
 We will see something similar in the case of the $R$-matrix: the data of a rational $R$-matrix is equivalent to the monoidality of a certain functor.
-See Theorem \brian{ref}
+See Theorems \ref{thm: fun1} and \ref{thm: comodequiv}. 
 
 For the remainder of this section, the category $\ymodfin$ denotes the category of (non dg) $Y(\fg)$-modules that are free and finite dimensional as $\CC[[\hbar]]$-modules. 
 
@@ -167,7 +211,7 @@ A natural transformation making $G$ a monoidal functor is the data of a natural 
 \]
 In other words, we have isomorphisms $G(c \tensor_{\sC} c') \cong G(c) \tensor_{\sD} G(c')$ that are natural in $c,c' \in \sC$. 
 
-\begin{lem}
+\begin{lem}\label{lem: monoidal1}
 Let $F_\lambda$ be the functor from Equation (\ref{functor}).
 Then, the data of a natural transformation making $F$ a monoidal functor is equivalent to the data of a natural transformation
 \[
@@ -178,15 +222,41 @@ such that the diagrams (\ref{Rd1}) and (\ref{Rd2}) commute.
 
 We can summarize a consequence of the above lemmas in the following way. 
 
-\begin{thm}
+\begin{thm}\label{thm: fun1}
 Drinfeld's $R$-matrix $R(\lambda)$ gives rise to a natural transformation $\eta_R$, as in Lemma \ref{lem: R1}, making the functor
 \[
-F_\lambda : \ymodfin \times \ymodfin \to {\rm Mod}_{Y(\fg)((\lambda))} .
+F_\lambda : \ymodfin \times \ymodfin \to {\rm Mod}_{Y(\fg)} ((\lambda)) .
 \]
 monoidal. 
 \end{thm}
 
 \subsection{A variation for comodules}
+
+\subsubsection{An asymmetry between modules and comodules}
+Thus far, we have used the fact that any $Y(\fg)$-module induces a $Y(\fg)((\lambda)) = Y(\fg) \Hat{\tensor} \CC((\lambda))$-module. 
+In the comodule case, this does not work. 
+The reason for this is the following. 
+
+Suppose $A$ is any algebra in $\sC^b$. 
+Then, we obtain a $\CC((\lambda))$ algebra $A((\lambda)) = A \Hat{\tensor} \CC((\lambda))$ as the following composition
+\[
+A((\lambda)) \tensor_{\CC((\lambda)), alg} A((\lambda)) \to A((\lambda)) \Hat{\tensor}_{\CC((\lambda))} A((\lambda)) = (A \tensor A) \Hat{\tensor} \CC((\lambda)) \xto{m_A} A \Hat{\tensor} \CC((\lambda)) = A((\lambda)) .
+\] 
+The first arrow is the embedding of the algebraic tensor product inside of the completed tensor product. 
+This says that every algebra $A$ induces a $\CC((\lambda))$-linear algebra $A((\lambda))$.
+
+The same is not true for coalgebras. 
+Suppose $C$ is a coalgebra in $\sC^b$.
+The coproduct extends $\CC((\lambda))$-linearly to a map
+\[
+C((\lambda)) \to (C \tensor C) ((\lambda)) = (C \tensor C) \Hat{\tensor} \CC((\lambda)) .
+\] 
+Note that the right hand side {\em differs} from the $\CC((\lambda))$-algebraic tensor product $C((\lambda)) \tensor_{\CC((\lambda)), alg} C((\lambda))$. 
+There is only a map from this algebraic tensor product into the right hand side above.
+Thus, $C$ does not induce a coalgebra structure on $C((\lambda))$. 
+Moreover, this shows that the notion of cofree comodules does not exist for $C((\lambda))$. 
+
+\subsubsection{}
 
 Define 
 \[
@@ -197,30 +267,162 @@ by $(V,W) \mapsto T_{\lambda} V \tensor T_0 W$.
 \begin{thm}\label{thm: comodequiv}
 The following pieces of data are equivalent:
 \begin{itemize}
-\item[(1)] An $R$-matrix with spectral parameter
+\item[(i)] An $R$-matrix with spectral parameter
 \[
 R(\lambda) \in F^0(Y(\fg) \tensor Y(\fg))((\lambda))
 \]
 satisfying (1),(2), and (3) of Theorem \ref{thm: drin1}.
-\item[(2)] 
+\item[(ii)] 
 The data of a natural transformation making $F_\lambda$ a monoidal functor.
 \end{itemize}
 \end{thm}
+\begin{proof}
+By Lemma \ref{lem: monoidal1}, the data (ii) of making $F_\lambda$ monoidal is equivalent to a natural isomorphism
+\[
+\eta_{V,W} : T_0(V) \tensor T_\lambda(W) \cong T_\lambda(W) \tensor T_0(V),
+\]
+satisfying conditions \brian{from R matrix lemmas}. 
+Thus, we must show that an $R$-matrix as in (i) is equivalent to this data.
+
+Let $V, W$ be $Y^*(\fg)$ comodules \brian{what does this mean}, and let $\Delta_V, \Delta_W$ denote the coaction maps.
+Any element $\alpha \in Y(\fg) \tensor Y(\fg)$ defines a composition
+\[
+V \tensor W \xto{\Delta_V \tensor \Delta_W} (Y^*(\fg) \tensor V) \tensor (Y^*(\fg) \tensor W) \xto{\alpha_{13}} V \tensor W .
+\]
+
+Since Drinfeld's $R(\lambda) \in Y(\fg) \tensor Y(\fg) ((\lambda))$ is $\CC^\times$-weight zero, it determines a filtration preserving map
+\[
+R_{V,W}(\lambda) : V \tensor W \to V
+\]
+\end{proof}
 
 When such an $R(\lambda)$ is given, we will denote by $F_R$ or $F_{R(\lambda)}$ the associated monoidal functor. 
 
 \section{The OPE}
+\def\Obsmod{{\rm Mod}_{\Obs_0}}
+\def\Obslmod{{\rm Mod}_{\Obs_0}((\lambda))}
+
+\begin{prop}
+The map of $\sE_2$ algebras arising from the factorization product of disks in the $z$-plane
+\[
+m : \Obs_{0} \tensor \Obs_{0} \to \Obs_{D(0,s)} \tensor \Omega^{0,*}(A)
+\]
+determines a map
+\[
+m_{OPE} : \Obs_0 \tensor \Obs_0 \to \Obs_0 \tensor \CC((z))
+\]
+that fits into the commuting square of $\sE_2$-algebras
+\[
+\begin{tikzcd}
+\Obs_0 \tensor \Obs_0 \ar[r, "m_{OPE}"] \ar[d, "m"] & \Obs_0 \tensor \CC((z)) \ar[d] \\
+\Obs_{D(0,s)} \tensor \Omega^{0,*}(D(0,r)) [z^{-1}] \ar[r] & \Obs_{D(0,s)} \tensor \CC((z)) .
+\end{tikzcd}
+\]
+\end{prop}
+
 
 \subsection{The main result}
 
 
 
 \begin{thm}[\cite{CosYangian1}] 
-There is a natural equivalence of monoidal functors $\yscomod \times \yscomod \to \yslcomod$ 
+There is a natural equivalence of monoidal functors
 \[
-F_{OPE} \cong F_{R(\lambda)}
+F_{OPE} \cong F_{R(\lambda)} : \yscomod \times \yscomod \to \yslcomod
 \]
 where $F(R(\lambda))$ is the monoidal functor corresponding to Drinfeld's $R$-matrix as in Theorem \ref{thm: comodequiv}.
 \end{thm}  
+\begin{proof}
+First, we need to show that there is an equivalence of functors (forgetting monoidality). 
+
+Since $F_{OPE}$ is monoidal, there is an isomorphism
+\[
+F_{OPE} (V \times W) = F_{OPE}( (V \times 1) \tensor (1 \tensor W)) = F_{OPE} (V \times 1) \tensor F_{OPE}(1 \times W).
+\]
+Here, $1 = \CC[[\hbar]]$ is the trivial $\CC[[\hbar]]$-linear $Y(\fg)$-module.
+
+It suffices to show that there is a natural quasi-isomorphism
+\[
+F_{OPE} (V \times 1) \tensor F_{OPE}(1 \times W) \cong T_0(V) \tensor T_\lambda(W) .
+\]
+Recall, $F_{OPE}$ was induced from the map of $E_2$ algebras
+\[
+m_{OPE}(\lambda) : \Obs_0 \tensor \Obs_0 \to \Obs_0((\lambda)) .
+\]
+When restricted to $\Obs_0 \tensor \{1\}$, this map is simply the $\CC((\lambda))$-linear extension of the identity map. 
+Thus, $F_{OPE} (V \times 1) = T_0(V)$. 
+
+We thus need to show that $F_{OPE} (1 \times W) = T_\lambda(W)$. 
+For this, consider the derivation $\partial_z = \frac{\partial}{\partial z}$ acting on $\Obs_0$. 
+Define
+\[
+\Tilde{T}_\lambda : \Obs_0 \to \Obs_0 [[\lambda]]
+\]
+via $\Tilde{T}_\lambda (O) = e^{\lambda \partial_z} O \in \Obs_0 [[\lambda]]$. 
+
+\begin{lem}
+The restriction of $m'_{OPE}$
+\[
+m'_{OPE} (1 \tensor -) : \Obs_0 \to \Obs_0((\lambda))
+\]
+agrees with $\Tilde{T}_{-\lambda}$. 
+\end{lem}
+\begin{proof}
+This is almost by construction. 
+By Proposition \ref{prop: ope}, this map factors as
+\[
+\Obs_0 \to \Omega^{0,*}(D(0,r))[z^{-1}] \to \Omega^{0,*}(\Hat{D}) \simeq \CC((z))
+\]
+for any $r > 0$.
+The middle map is power series expansion, which lands in the Dolbeault complex of the formal disk.
+Since we are identifying $z \leftrightarrow -\lambda$, the lemma follows.
+\end{proof}
+
+The lemma implies that the functor 
+\[
+F(1 \times -) : \Obsmod \to \Obslmod
+\]
+sends 
+\[
+V \mapsto \Tilde{T}_{-\lambda}(V) = V \tensor_{\Obs_0} \;_1\left(\Obs_0\right)_{-\lambda}
+\]
+Here, $_1\left(\Obs_0\right)_{-\lambda}$ denotes the $\Obs_0 - \Obs_0$ bimodule for which an element $O \in \Obs_0$ acts by itself on the left and by $\Tilde{T}_{-\lambda}(O)$ on the right. 
+
+The main result of this seminar is that the Koszul dual of $\Obs_0$ is the dual Yangian $Y^*(\fg)$. 
+This Koszul duality trades modules over $\Obs_0$ for comodules over $Y^*(\fg)$. 
+The endofunctor $\Tilde{T}_{-\lambda}$ on modules for $\Obs_0$ induces an endofunctor on the category of comodules for $Y^*(\fg)$. 
+
+In terms of $\lambda$, there is a sign flip under this duality. 
+That is, if $W$ is a $Y^*(\fg)$-comodule, define $\Tilde{T}_\lambda(W)$ to be the $Y^*(\fg)$-comodule $W \tensor_{Y^*(\fg)} \;_1Y^*(\fg)_\lambda$. 
+
+The claim is that the functor $\Tilde{T}_{-\lambda}$ on $\Obs_0$-modules intertwines with the functor $\Tilde{T}_{\lambda}$ on $Y^*(\fg)$-comodules under Koszul duality. 
+
+What we have just seen is that when we view $F_{OPE}$ as a bifunctor
+\[
+F_{OPE} : \yscomod \times \yscomod \to \yslcomod
+\]
+that $F_{OPE} (1 \times W) \simeq \Tilde{T}_\lambda(W)$. 
+The last thing we need to show is that $\Tilde{T}_\lambda$ and $T_{\lambda}$ agree. 
+The result follows from the following lemma.
+
+\begin{lem}
+There is a unique homomorphism of Hopf algebras $T : Y(\fg) \to Y(\fg) [[\lambda]]$
+ such that
+\begin{enumerate}
+\item[(1)] 
+Classically, $T|_{\hbar = 0} : U(\fg[[z]]) \to U(\fg[[z]])[[\lambda]]$ arises from the map of Lie algebras
+\[
+\fg[[z]] \to \fg[[z,\lambda]] \;\;\; , \;\;\; z \mapsto z + \lambda .
+\]
+\item[(2)] $T$ is $\CC^\times$-equivariant.
+\item[(3)] $T \mod \lambda = {\rm id}$. 
+\end{enumerate}
+\end{lem}
+
+From this lemma, the result is immediate.
+We have just shown that $F_{OPE}(V \times W) \cong T_0(V) \tensor T_{\lambda}(W)$. 
+Thus, $F_{OPE}$ agrees with $F_{R(\lambda)}$.
+
+\end{proof}
 
 \end{document}
